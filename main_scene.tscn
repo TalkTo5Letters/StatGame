@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c24kesuvfmya"]
+[gd_scene load_steps=6 format=3 uid="uid://c24kesuvfmya"]
 
 [ext_resource type="PackedScene" uid="uid://b0jxock7arpsl" path="res://Player/Player.tscn" id="1_5ncex"]
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
 [ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
+[ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,3 +32,10 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="1GhgDm-plan" type="Sprite2D" parent="."]
+z_index = -2
+texture_filter = 1
+position = Vector2(18, 8)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("5_48iog")

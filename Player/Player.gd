@@ -3,6 +3,7 @@ var animation_player
 var animation_tree
 var state_machine
 var input_direction
+var player_sprite
 
 var hp
 var damage
@@ -11,46 +12,71 @@ var crit_dmg
 var crit_rate
 var attack_speed
 
+@export var friction = 0.2
+@export var acceleration = 0.5
+@export var sprint = 1.2
+
 func _ready():
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
+	player_sprite = $Sprite2D
 	state_machine = animation_tree.get("parameters/playback")
+	animation_tree["active"] = true
 	update_animation_parameters(Vector2(0,1), false)
 	reload_stats()
 	
 func get_input():
 	input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
+	return input_direction
+
+func movement():
+	var direction = get_input()
+	update_animation_parameters(direction, false)
+	if direction.length() > 0:
+		if Input.is_action_pressed("sprint"):
+			velocity = velocity.lerp(direction.normalized() * speed, acceleration) * sprint
+			update_animation_parameters(direction, true)
+		else:
+			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
+			update_animation_parameters(direction, false)
+	else:
+		update_animation_parameters(direction, false)
+		velocity = velocity.lerp(Vector2.ZERO, friction)
+	move_and_slide()
 
 func _physics_process(delta):
+	state_machine_state()
 	get_input()
-	if Input.is_action_pressed("sprint"): 
-		velocity *= 1.5
-		move_and_slide()
-		update_animation_parameters(velocity, true)
-		#state_machine_state(velocity)
-
-	else:
-		move_and_slide()
-		update_animation_parameters(velocity, false)
-		#state_machine_state(velocity)
+	movement()
 
 func update_animation_parameters(move_input : Vector2, sprint: bool):
-	if(move_input != Vector2.ZERO):
+	if move_input.length() > 0:
 		if sprint:
-			animation_tree.set("parameters/BlendTree/TimeScale/scale", 2)
-			animation_tree.set("parameters/Idle/blend_position", move_input)
-			animation_tree.set("parameters/BlendTree/Walk/blend_position", move_input)
+			animation_tree.set("parameters/Walk/TimeScale/scale", 2)
+			state_machine.travel("Walk")
 		else:
-			animation_tree.set("parameters/BlendTree/TimeScale/scale", 1)
-			animation_tree.set("parameters/Idle/blend_position", move_input)
-			animation_tree.set("parameters/BlendTree/Walk/blend_position", move_input)
-
-func state_machine_state(velocity):
-	if(velocity != Vector2.ZERO):
-		state_machine.travel("BlendTree")
+			animation_tree.set("parameters/Walk/TimeScale/scale", 1)
+			state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+		
+	
+
+	if move_input.x > 0:
+			player_sprite["flip_h"] = true
+	if move_input.x < 0:
+			player_sprite["flip_h"] = false
+	
+	if move_input.y < 0:
+		animation_tree["parameters/Walk/walking/conditions/facing_up"] = true
+		animation_tree["parameters/Walk/walking/conditions/facing_down"] = false
+	else:
+		animation_tree["parameters/Walk/walking/conditions/facing_up"] = false
+		animation_tree["parameters/Walk/walking/conditions/facing_down"] = true
+		
+func state_machine_state():
+	pass
+		
 
 func reload_stats():
 	hp = CharacterStats.Chara1.get("hp")
