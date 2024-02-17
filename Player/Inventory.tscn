@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bas21foes3v86"]
+
+[ext_resource type="Script" path="res://Player/Inventory.gd" id="1_tnw7m"]
+[ext_resource type="Script" path="res://Player/GridContainer.gd" id="2_jtygb"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tnw7m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.333333)
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 32
+text = "Artifacts"
+
+[node name="Button2" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 157.0
+offset_right = 374.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 32
+text = "Consumables"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("2_jtygb")

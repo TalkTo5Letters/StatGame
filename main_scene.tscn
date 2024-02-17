@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c24kesuvfmya"]
+
+[ext_resource type="PackedScene" uid="uid://b0jxock7arpsl" path="res://Player/Player.tscn" id="1_5ncex"]
+[ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
+[ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
+[ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Party" parent="." instance=ExtResource("1_e65cb")]
+scale = Vector2(0.2, 0.2)
+
+[node name="CharacterBody2D" parent="Party" instance=ExtResource("1_5ncex")]
+scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-144, 95)
+texture = ExtResource("2_u0o4u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_haq2p")]
+process_mode = 3
+visible = false
+layout_direction = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
