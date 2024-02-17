@@ -18,15 +18,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("primary") && player_can_input:
-		print("YUWI OAHA")
-		attacking = true
-		basic_attack()
-	elif($"..".velocity.length() > 0 && attacking == false):
-		state_machine.travel("BlendTree")
-		print("tite")
-	elif(attacking == false):
-		state_machine.travel("Idle")
+	pass
+
 
 
 

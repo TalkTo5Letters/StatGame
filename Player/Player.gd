@@ -11,6 +11,7 @@ var speed
 var crit_dmg
 var crit_rate
 var attack_speed
+var is_attacking
 
 @export var friction = 0.2
 @export var acceleration = 0.5
@@ -45,9 +46,13 @@ func movement():
 	move_and_slide()
 
 func _physics_process(delta):
-	state_machine_state()
-	get_input()
-	movement()
+	if Input.is_action_pressed("primary") && $AttackHandler.player_can_input:
+		print("YUWI OAHA")
+		$AttackHandler.attacking = true
+		$AttackHandler.basic_attack()
+	elif $AttackHandler.attacking == false:
+		get_input()
+		movement()
 
 func update_animation_parameters(move_input : Vector2, sprint: bool):
 	if move_input.length() > 0:
@@ -73,9 +78,6 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 	else:
 		animation_tree["parameters/Walk/walking/conditions/facing_up"] = false
 		animation_tree["parameters/Walk/walking/conditions/facing_down"] = true
-		
-func state_machine_state():
-	pass
 		
 
 func reload_stats():
