@@ -28,6 +28,7 @@ func _process(delta):
 
 
 func start_charged_attack():
+	player_can_input = false
 	charged_attacking = true
 	
 func stop_charged_attack():
@@ -38,14 +39,24 @@ func can_attack():
 	player_can_input = true
 
 func cant_attack():
-	player_can_input = false
+	if !Input.is_action_pressed("primary"):
+		$Charged_attack_timer.set_paused(true)
+		player_can_input = false
+	elif Input.is_action_pressed("primary"):
+		player_can_input = true
 
 func attack_done():
-	basic_attack_level = 0
+	$"..".velocity = Vector2(0,0)
+	if !Input.is_action_pressed("primary"):
+		$Charged_attack_timer.set_paused(true)
 	player_can_input = true
+	basic_attack_level = 0
 	attacking = false
 
 func basic_attack():
+	$Charged_attack_timer.set_paused(false)
+	$Charged_attack_timer.start(1)
+	print($Charged_attack_timer.time_left)
 	basic_attack_level += 1
 	match basic_attack_level:
 		1:
@@ -76,6 +87,7 @@ func basic_attack3():
 	player_can_input = false
 
 func charged_attack():
+	print("Gyahaha")
 	attacking = true
 	state_machine.travel("Attacking")
 	state_machine_attacking.travel("Special_Attacks_Charged_Attack")
