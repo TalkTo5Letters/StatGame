@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://ibaplk4t57k2"]
 
+[ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="1_xcipx"]
 [ext_resource type="Script" path="res://Weapons/sword.gd" id="2_nfdlh"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1b807"]
 
 [node name="Sword" type="Sprite2D"]
 position = Vector2(-4, -4)
-rotation = -0.807507
+rotation = -1.5708
 scale = Vector2(0.012, 0.012)
-texture = SubResource("CompressedTexture2D_1b807")
+texture = ExtResource("1_xcipx")
 script = ExtResource("2_nfdlh")

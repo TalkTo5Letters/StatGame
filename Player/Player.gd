@@ -39,6 +39,7 @@ func movement():
 			update_animation_parameters(direction, true)
 		else:
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
+			print(velocity)
 			update_animation_parameters(direction, false)
 	else:
 		update_animation_parameters(direction, false)
@@ -46,11 +47,7 @@ func movement():
 	move_and_slide()
 
 func _physics_process(delta):
-	if Input.is_action_pressed("primary") && $AttackHandler.player_can_input:
-		print("YUWI OAHA")
-		$AttackHandler.attacking = true
-		$AttackHandler.basic_attack()
-	elif $AttackHandler.attacking == false:
+	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
 		get_input()
 		movement()
 
