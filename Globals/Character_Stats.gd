@@ -14,7 +14,7 @@ var Characters = {
 		"crit_dmg": 150,
 		"crit_rate": 50,
 		"attack_speed": 100,
-		"equipped_artifacts" : [],
+		"equipped_artifacts" : [101, 102],
 		"equipped_weapon": null
 	},
 
@@ -30,7 +30,7 @@ var Characters = {
 		"crit_dmg": 150,
 		"crit_rate": 50,
 		"attack_speed": 100,
-		"equipped_artifacts" : [],
+		"equipped_artifacts" : [101],
 		"equipped_weapon": null
 	}
 }

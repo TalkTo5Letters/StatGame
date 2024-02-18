@@ -14,7 +14,13 @@ func load_inv():
 	match current_category:
 		"weapons":
 			for i in InventoryList.Weapons:
-				var weapon_inv = preload("res://Player/weapon_slot_inv.tscn").instantiate()
+				var weapon_inv = preload("res://Player/Inventory/Weapons/weapon_slot_inv.tscn").instantiate()
+				print(GlobalItemList.Weapons.get(i))
+				weapon_inv.weapon_data = GlobalItemList.Weapons.get(i)
+				add_child(weapon_inv)
+		"Artifacts":
+			for i in InventoryList.Artifacts:
+				var weapon_inv = preload("res://Player/Inventory/Weapons/weapon_slot_inv.tscn").instantiate()
 				weapon_inv.weapon_data = GlobalItemList.Weapons.get(i)
 				add_child(weapon_inv)
 

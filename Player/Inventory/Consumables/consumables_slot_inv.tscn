@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkoomm7t5xhjp"]
+
+[ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="1_dehlj"]
+[ext_resource type="Script" path="res://Player/weapon_slot_inv.gd" id="2_o0ilb"]
+
+[node name="WeaponSlotInv" type="TextureButton"]
+offset_right = 1000.0
+offset_bottom = 1000.0
+texture_normal = ExtResource("1_dehlj")
+script = ExtResource("2_o0ilb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 138.0
+offset_right = 331.0
+offset_bottom = 297.0
+bbcode_enabled = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -42,7 +42,6 @@ func movement():
 			update_animation_parameters(direction, true)
 		else:
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
-			print(velocity)
 			update_animation_parameters(direction, false)
 	else:
 		update_animation_parameters(direction, false)
@@ -90,7 +89,7 @@ func reload_stats():
 	
 	if CharacterStats.Characters.get("Chara1").get("equipped_weapon") == null:
 		CharacterStats.Characters.get("Chara1")["equipped_weapon"] = 1
-		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara1").get("equipped_weapon"))
+		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara1").get("equipped_weapon")).get("effects")
 		if equipped_weapon.has("hp"):
 			hp += equipped_weapon.get("hp")
 		if equipped_weapon.has("damage"):
@@ -106,7 +105,7 @@ func reload_stats():
 				
 	if CharacterStats.Characters.get("Chara1").get("equipped_artifacts").is_empty() == false:
 		for equipped_artifact_id in CharacterStats.Characters.get("Chara1").get("equipped_artifacts"):
-			var equipped_artifact = GlobalItemList.Artifacts.get(equipped_artifact_id)
+			var equipped_artifact = GlobalItemList.Artifacts.get(equipped_artifact_id).get("effects")
 			if equipped_artifact.has("hp"):
 				hp += equipped_artifact.get("hp")
 			if equipped_artifact.has("damage"):
