@@ -13,6 +13,8 @@ var crit_rate
 var attack_speed
 var is_attacking
 
+var character_name
+
 @export var friction = 0.2
 @export var acceleration = 0.5
 @export var sprint = 1.2
@@ -39,7 +41,6 @@ func movement():
 			update_animation_parameters(direction, true)
 		else:
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
-			print(velocity)
 			update_animation_parameters(direction, false)
 	else:
 		update_animation_parameters(direction, false)
@@ -85,7 +86,7 @@ func reload_stats():
 	crit_rate =CharacterStats.Characters.get("Chara2").get("crit_rate")
 	attack_speed = CharacterStats.Characters.get("Chara2").get("attack_speed")
 	
-	if CharacterStats.Characters.get("Chara2").get("equipped_weapon").is_empty():
+	if CharacterStats.Characters.get("Chara2").get("equipped_weapon") == null:
 		CharacterStats.Characters.get("Chara2")["equipped_weapon"] = 1
 		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara2").get("equipped_weapon"))
 		if equipped_weapon.has("hp"):

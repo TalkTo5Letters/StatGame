@@ -12,6 +12,8 @@ var crit_dmg
 var crit_rate
 var attack_speed
 var is_attacking
+var CharacterStats
+var character_name
 
 @export var friction = 0.2
 @export var acceleration = 0.5
@@ -23,6 +25,7 @@ func _ready():
 	player_sprite = $Sprite2D
 	state_machine = animation_tree.get("parameters/playback")
 	animation_tree["active"] = true
+	CharacterStats = get_node("/root/CharacterStats")
 	update_animation_parameters(Vector2(0,1), false)
 	reload_stats()
 	
@@ -85,7 +88,7 @@ func reload_stats():
 	crit_rate =CharacterStats.Characters.get("Chara1").get("crit_rate")
 	attack_speed = CharacterStats.Characters.get("Chara1").get("attack_speed")
 	
-	if CharacterStats.Characters.get("Chara1").get("equipped_weapon").is_empty():
+	if CharacterStats.Characters.get("Chara1").get("equipped_weapon") == null:
 		CharacterStats.Characters.get("Chara1")["equipped_weapon"] = 1
 		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara1").get("equipped_weapon"))
 		if equipped_weapon.has("hp"):

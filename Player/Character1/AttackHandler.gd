@@ -47,7 +47,6 @@ func attack_done():
 
 func basic_attack():
 	basic_attack_level += 1
-	print(basic_attack_level)
 	match basic_attack_level:
 		1:
 			basic_attack1()
@@ -55,7 +54,8 @@ func basic_attack():
 			basic_attack2()
 		3:
 			basic_attack3()
-	
+		4:
+			attack_done()
 
 
 func basic_attack1():
@@ -92,12 +92,10 @@ func check_basic_attack():
 		if $Charged_attack_timer.is_paused():
 			$Charged_attack_timer.set_paused(false)
 			$Charged_attack_timer.start(1)
-			print($Charged_attack_timer.time_left)
 			return false
 	if Input.is_action_just_released("primary") && player_can_input:
 		$Charged_attack_timer.set_paused(true)
 		if $Charged_attack_timer.time_left > 0 && $Charged_attack_timer.time_left < 1:
-			print($Charged_attack_timer.time_left)
 			basic_attack()
 			return true
 	else:

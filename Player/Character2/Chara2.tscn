@@ -1,9 +1,9 @@
 [gd_scene load_steps=55 format=3 uid="uid://do8ydv0tkvq88"]
 
 [ext_resource type="Script" path="res://Player/Character2/Player.gd" id="1_qve5m"]
-[ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_emx6a"]
-[ext_resource type="Script" path="res://Player/Character2/AttackHandler.gd" id="3_qctn0"]
-[ext_resource type="Script" path="res://Player/Character2/wapon.gd" id="4_63csi"]
+[ext_resource type="Texture2D" uid="uid://3is2frf40b6q" path="res://Animations/dummy_spritesheet2.png" id="2_8erng"]
+[ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
+[ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="5_7bpqp"]
 [ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_wpfsg"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
@@ -620,14 +620,15 @@ graph_offset = Vector2(-288, -37.2109)
 radius = 8.0
 height = 28.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Character2" type="CharacterBody2D"]
 position = Vector2(-550, 0)
+collision_mask = 2
 script = ExtResource("1_qve5m")
 metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 100)
-texture = ExtResource("2_emx6a")
+texture = ExtResource("2_8erng")
 offset = Vector2(0, -100)
 hframes = 6
 
@@ -660,16 +661,16 @@ visible = false
 shape = SubResource("CapsuleShape2D_1w1lc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.8, 0.8)
 
 [node name="AttackHandler" type="Node2D" parent="."]
-script = ExtResource("3_qctn0")
+script = ExtResource("3_oytl6")
 
 [node name="Charged_attack_timer" type="Timer" parent="AttackHandler"]
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("4_63csi")
+script = ExtResource("5_7bpqp")
 
 [node name="Weapon" type="Sprite2D" parent="Node2D"]
 scale = Vector2(0.5, 0.5)

@@ -4,10 +4,9 @@
 
 [node name="CharacterBar" type="Control"]
 layout_mode = 3
-anchor_right = 0.222
-anchor_bottom = 0.148
-offset_right = 0.255981
-offset_bottom = 0.0960007
+anchors_preset = 0
+offset_right = 256.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3h75i")
