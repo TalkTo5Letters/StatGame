@@ -21,17 +21,26 @@ offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.333333)
 
-[node name="Button" type="Button" parent="ColorRect"]
+[node name="Weapon" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 32
-text = "Artifacts"
+text = "Weapons
+"
 
-[node name="Button2" type="Button" parent="ColorRect"]
+[node name="Artifacts" type="Button" parent="ColorRect"]
 layout_mode = 0
 offset_left = 157.0
 offset_right = 374.0
+offset_bottom = 53.0
+theme_override_font_sizes/font_size = 32
+text = "Artifacts"
+
+[node name="Consumables" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 391.0
+offset_right = 542.0
 offset_bottom = 53.0
 theme_override_font_sizes/font_size = 32
 text = "Consumables"
@@ -41,4 +50,10 @@ layout_mode = 0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 648.0
+theme_override_constants/h_separation = 96
+theme_override_constants/v_separation = 96
 script = ExtResource("2_jtygb")
+
+[connection signal="pressed" from="ColorRect/Weapon" to="GridContainer" method="_on_weapon_pressed"]
+[connection signal="pressed" from="ColorRect/Artifacts" to="GridContainer" method="_on_artifacts_pressed"]
+[connection signal="pressed" from="ColorRect/Consumables" to="GridContainer" method="_on_consumables_pressed"]

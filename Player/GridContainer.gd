@@ -18,12 +18,30 @@ func load_inv():
 				print(GlobalItemList.Weapons.get(i))
 				weapon_inv.weapon_data = GlobalItemList.Weapons.get(i)
 				add_child(weapon_inv)
-		"Artifacts":
+		"artifacts":
 			for i in InventoryList.Artifacts:
-				var weapon_inv = preload("res://Player/Inventory/Weapons/weapon_slot_inv.tscn").instantiate()
-				weapon_inv.weapon_data = GlobalItemList.Weapons.get(i)
-				add_child(weapon_inv)
+				var artifact_inv = preload("res://Player/Inventory/Artifacts/artifact_slot_inv.tscn").instantiate()
+				artifact_inv.artifact_data = GlobalItemList.Artifacts.get(i)
+				add_child(artifact_inv)
 
 func clear_inv():
 	for n in get_children():
 		n.queue_free() 
+
+
+func _on_weapon_pressed():
+	clear_inv()
+	current_category = "weapons"
+	load_inv()
+
+
+func _on_artifacts_pressed():
+	clear_inv()
+	current_category = "artifacts"
+	load_inv()
+
+
+func _on_consumables_pressed():
+	clear_inv()
+	current_category = "consumables"
+	load_inv()

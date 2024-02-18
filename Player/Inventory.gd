@@ -9,10 +9,12 @@ func _input(event):
 
 func open():
 	is_open = true
+	get_tree().paused = true
 	$GridContainer.load_inv()
 	visible = true
 	
 func close():
 	$GridContainer.clear_inv()
+	get_tree().paused = false
 	is_open = false
 	visible = false

@@ -1,17 +1,23 @@
 extends Button
 var info_vis
-var weapon_data
+var artifact_data
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$TextureRect.set_texture(load(weapon_data.get("texture")))
-	$RichTextLabel.append_text(weapon_data.get("name"))
-	$RichTextLabel.newline()
-	$RichTextLabel.append_text("Damege: "  + str(weapon_data.get("damage")))
+	
+	$TextureRect.set_texture(load(artifact_data.get("texture")))
+	$RichTextLabel.append_text(artifact_data.get("name"))
 	$RichTextLabel.newline()
 	$RichTextLabel.newline()
 	$RichTextLabel.append_text("Description:")
 	$RichTextLabel.newline()
-	$RichTextLabel.append_text(weapon_data.get("description"))
+	$RichTextLabel.append_text(artifact_data.get("description"))
+	$RichTextLabel.newline()
+	$RichTextLabel.append_text("Effects:")
+	$RichTextLabel.newline()
+	for i in artifact_data.get("effects"):
+		var effect_text = i + ": " + str(artifact_data.get("effects").get(i))
+		$RichTextLabel.append_text(effect_text)
+		$RichTextLabel.newline()
 # Called when the node enters the scene tree for the first time.
 
 

@@ -16,6 +16,7 @@ position = Vector2(-144, 95)
 texture = ExtResource("2_u0o4u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_haq2p")]
 process_mode = 3
