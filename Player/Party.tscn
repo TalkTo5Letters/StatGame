@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://wqb7ehfk3wnx"]
+[gd_scene load_steps=3 format=3 uid="uid://wqb7ehfk3wnx"]
+
+[ext_resource type="Script" path="res://Player/Party.gd" id="1_j6lol"]
+[ext_resource type="Script" path="res://Player/CharacterGrid.gd" id="2_2ily7"]
 
 [node name="Party" type="Node2D"]
+script = ExtResource("1_j6lol")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CharacterGrid" type="VBoxContainer" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 0
+offset_left = 896.0
+offset_top = 163.0
+offset_right = 1152.0
+offset_bottom = 534.0
+theme_override_constants/separation = 100
+script = ExtResource("2_2ily7")

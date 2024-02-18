@@ -4,6 +4,10 @@ var animation_tree
 var state_machine
 var input_direction
 var player_sprite
+<<<<<<< Updated upstream
+=======
+var mouse_angle
+>>>>>>> Stashed changes
 
 var hp
 var damage
@@ -11,6 +15,10 @@ var speed
 var crit_dmg
 var crit_rate
 var attack_speed
+<<<<<<< Updated upstream
+=======
+var is_attacking
+>>>>>>> Stashed changes
 
 @export var friction = 0.2
 @export var acceleration = 0.5
@@ -38,6 +46,10 @@ func movement():
 			update_animation_parameters(direction, true)
 		else:
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
+<<<<<<< Updated upstream
+=======
+			print(velocity)
+>>>>>>> Stashed changes
 			update_animation_parameters(direction, false)
 	else:
 		update_animation_parameters(direction, false)
@@ -45,9 +57,17 @@ func movement():
 	move_and_slide()
 
 func _physics_process(delta):
+<<<<<<< Updated upstream
 	state_machine_state()
 	get_input()
 	movement()
+=======
+	mouse_angle = rad_to_deg(get_angle_to(get_global_mouse_position()))
+	if (mouse_angle > 200 and mouse_angle < 340): print(mouse_angle)
+	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
+		get_input()
+		movement()
+>>>>>>> Stashed changes
 
 func update_animation_parameters(move_input : Vector2, sprint: bool):
 	if move_input.length() > 0:
@@ -64,6 +84,7 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 
 	if move_input.x > 0:
 			player_sprite["flip_h"] = true
+<<<<<<< Updated upstream
 	if move_input.x < 0:
 			player_sprite["flip_h"] = false
 	
@@ -76,6 +97,19 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 		
 func state_machine_state():
 	pass
+=======
+			$horizontality["scale"] = Vector2(-1, 1)
+	if move_input.x < 0:
+			player_sprite["flip_h"] = false
+			$horizontality["scale"] = Vector2(1, 1)
+	
+	#if (move_input.y < 0) or (mouse_angle > 45 and mouse_angle < 135):
+	#	animation_tree["parameters/Walk/walking/conditions/facing_up"] = true
+	#	animation_tree["parameters/Walk/walking/conditions/facing_down"] = false
+	#else:
+	#	animation_tree["parameters/Walk/walking/conditions/facing_up"] = false
+	#	animation_tree["parameters/Walk/walking/conditions/facing_down"] = true
+>>>>>>> Stashed changes
 		
 
 func reload_stats():

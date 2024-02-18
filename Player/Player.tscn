@@ -1,9 +1,19 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=50 format=3 uid="uid://b0jxock7arpsl"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_73irl"]
 [ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_t5auf"]
 [ext_resource type="Script" path="res://Player/wapon.gd" id="4_fxp3h"]
 [ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/580b57fcd9996e24bc43c301.png" id="5_768bu"]
+=======
+[gd_scene load_steps=59 format=3 uid="uid://ds5q6nvteeicm"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_73irl"]
+[ext_resource type="Texture2D" uid="uid://brwmdgomxhv4j" path="res://Animations/dummy_armless_spritesheet.png" id="2_7t0t4"]
+[ext_resource type="Script" path="res://Player/wapon.gd" id="4_fxp3h"]
+[ext_resource type="Texture2D" uid="uid://dwv3vedfi2sse" path="res://Animations/dummy_CANDYWEAPON_spritesheet.png" id="5_y2csa"]
+[ext_resource type="Shader" path="res://Player/haand.gdshader" id="6_blieh"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Player/AttackHandler.gd" id="6_u2wun"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
@@ -69,6 +79,104 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+<<<<<<< Updated upstream
+=======
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("horizontality/weapon_pivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, 62)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("horizontality/weapon_pivot:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("horizontality/weapon_pivot/Weapon:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("horizontality/weapon_pivot/Weapon/TextureRect:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("horizontality/weapon_pivot/Weapon:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("horizontality/weapon_pivot/Weapon:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("horizontality/weapon_pivot/Weapon:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -9.11841)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("horizontality/weapon_pivot/Weapon:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ierlj"]
 _data = {
@@ -76,6 +184,7 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_ktltn"]
+<<<<<<< Updated upstream
 length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -109,6 +218,17 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.4, 0.7, 1.5),
+=======
+resource_name = "Attack1"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackHandler")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.7),
+>>>>>>> Stashed changes
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
@@ -121,13 +241,95 @@ tracks/2/keys = {
 "method": &"attack_done"
 }]
 }
+<<<<<<< Updated upstream
 
 [sub_resource type="Animation" id="Animation_xbyvr"]
+=======
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 6, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("horizontality/weapon_pivot/Weapon:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 1, 3, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horizontality/weapon_pivot/Weapon:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.44179, -0.294961]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("horizontality/weapon_pivot/Weapon:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -9.11841), Vector2(3, -44), Vector2(4.00002, 8), Vector2(3.00001, -73), Vector2(1, -9.11841)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.7), Vector2(1, 1.1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("horizontality/weapon_pivot/Weapon:scale")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(0.75, 1), Vector2(0.75, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_xbyvr"]
+resource_name = "Attack2"
+>>>>>>> Stashed changes
 length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
+<<<<<<< Updated upstream
 tracks/0/path = NodePath("Node2D/Weapon:rotation")
+=======
+tracks/0/path = NodePath("horizontality/weapon_pivot/Weapon:rotation")
+>>>>>>> Stashed changes
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +341,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
+<<<<<<< Updated upstream
 tracks/1/path = NodePath("Node2D/Weapon:position")
+=======
+tracks/1/path = NodePath("horizontality/weapon_pivot/Weapon:position")
+>>>>>>> Stashed changes
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -170,30 +376,50 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_4v8hu"]
+<<<<<<< Updated upstream
+=======
+resource_name = "Attack3"
+>>>>>>> Stashed changes
 length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
+<<<<<<< Updated upstream
 tracks/0/path = NodePath("Node2D/Weapon:position")
+=======
+tracks/0/path = NodePath("horizontality/weapon_pivot/Weapon:position")
+>>>>>>> Stashed changes
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.25, 0.4, 0.5, 0.7, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
+<<<<<<< Updated upstream
 "values": [Vector2(7, 4), Vector2(7, 4), Vector2(7, 4), Vector2(15, 4), Vector2(7, 4), Vector2(7, 4), Vector2(0, 4)]
+=======
+"values": [Vector2(7, 4), Vector2(4, 20), Vector2(4, 20), Vector2(15, 4), Vector2(7, 4), Vector2(7, 4), Vector2(0, 4)]
+>>>>>>> Stashed changes
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
+<<<<<<< Updated upstream
 tracks/1/path = NodePath("Node2D/Weapon:rotation")
+=======
+tracks/1/path = NodePath("horizontality/weapon_pivot/Weapon:rotation")
+>>>>>>> Stashed changes
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.25, 0.4, 0.5, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
+<<<<<<< Updated upstream
 "values": [-2.44346, -4.18879, -4.18879, -4.01426, -3.83972, -1.39626]
+=======
+"values": [-0.872665, -2.61799, -2.61799, -2.44346, -2.26893, 0.174533]
+>>>>>>> Stashed changes
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -267,6 +493,7 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 0.0139626, -0.00349066]
 }
+<<<<<<< Updated upstream
 
 [sub_resource type="Animation" id="Animation_wr02b"]
 resource_name = "Moving"
@@ -307,6 +534,31 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-0.0872665, 0.0872665, -0.0872665, -0.0872665]
+=======
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("horizontality/weapon_pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-11, 64), Vector2(-13, 72)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("horizontality/weapon_pivot:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+>>>>>>> Stashed changes
 }
 
 [sub_resource type="Animation" id="Animation_rn1ik"]
@@ -360,6 +612,98 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 0.0139626, -0.00349066]
 }
+<<<<<<< Updated upstream
+=======
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("horizontality/weapon_pivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(29, 70)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("horizontality/weapon_pivot:z_index")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+
+[sub_resource type="Animation" id="Animation_wr02b"]
+resource_name = "Moving"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0872665, -0.0872665]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.0872665, 0.0872665, -0.0872665, -0.0872665]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horizontality/weapon_pivot:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("horizontality/weapon_pivot:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-17, 49), Vector2(-13, 63), Vector2(-37, 52)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="Animation" id="Animation_4kxum"]
 resource_name = "Moving_2"
@@ -401,6 +745,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [-0.0872665, 0.0872665, -0.0872665, -0.0872665]
 }
+<<<<<<< Updated upstream
+=======
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horizontality/weapon_pivot:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("horizontality/weapon_pivot:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(29, 45), Vector2(39, 57), Vector2(11, 50), Vector2(30, 62)]
+}
+>>>>>>> Stashed changes
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2a6sw"]
 _data = {
@@ -410,6 +781,76 @@ _data = {
 "Moving_2": SubResource("Animation_4kxum")
 }
 
+<<<<<<< Updated upstream
+=======
+[sub_resource type="Animation" id="Animation_fvj0k"]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 2,
+"values": [2, 1, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("horizontality/weapon_pivot/Weapon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 2,
+"values": [Vector2(0, 0), Vector2(0, 50), Vector2(0, 50), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackHandler")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"cant_attack"
+}, {
+"args": [],
+"method": &"start_charged_attack"
+}, {
+"args": [],
+"method": &"stop_charged_attack"
+}, {
+"args": [],
+"method": &"attack_done"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("horizontality/weapon_pivot/Weapon:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.28464, -2.28464]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi17t"]
+_data = {
+"Charged_Attack": SubResource("Animation_fvj0k")
+}
+
+>>>>>>> Stashed changes
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lw31u"]
 animation = &"Basic_Attack/Attack1"
 
@@ -419,6 +860,7 @@ animation = &"Basic_Attack/Attack2"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdgb"]
 animation = &"Basic_Attack/Attack3"
 
+<<<<<<< Updated upstream
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lulnl"]
 advance_mode = 2
 
@@ -441,12 +883,53 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tlcan"]
 states/Basic_Attack_Attack1/node = SubResource("AnimationNodeAnimation_lw31u")
 states/Basic_Attack_Attack1/position = Vector2(364, 99.4815)
+=======
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybvif"]
+animation = &"Special_Attacks/Charged_Attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oko72"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m3c53"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l0ykc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6rvgi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k25te"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6q8qg"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lfyow"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k252m"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tlcan"]
+state_machine_type = 1
+states/Basic_Attack_Attack1/node = SubResource("AnimationNodeAnimation_lw31u")
+states/Basic_Attack_Attack1/position = Vector2(372.148, 100.019)
+>>>>>>> Stashed changes
 states/Basic_Attack_Attack2/node = SubResource("AnimationNodeAnimation_0204n")
 states/Basic_Attack_Attack2/position = Vector2(553.333, 46)
 states/Basic_Attack_Attack3/node = SubResource("AnimationNodeAnimation_uvdgb")
 states/Basic_Attack_Attack3/position = Vector2(768, 4.32694)
+<<<<<<< Updated upstream
 transitions = ["Start", "Basic_Attack_Attack1", SubResource("AnimationNodeStateMachineTransition_lulnl"), "Basic_Attack_Attack1", "End", SubResource("AnimationNodeStateMachineTransition_ysf52"), "Basic_Attack_Attack1", "Basic_Attack_Attack2", SubResource("AnimationNodeStateMachineTransition_oko72"), "Basic_Attack_Attack2", "End", SubResource("AnimationNodeStateMachineTransition_gslw1"), "Basic_Attack_Attack2", "Basic_Attack_Attack3", SubResource("AnimationNodeStateMachineTransition_m3c53"), "Basic_Attack_Attack3", "End", SubResource("AnimationNodeStateMachineTransition_tws11")]
 graph_offset = Vector2(0, -44.3397)
+=======
+states/Special_Attacks_Charged_Attack/node = SubResource("AnimationNodeAnimation_ybvif")
+states/Special_Attacks_Charged_Attack/position = Vector2(372.444, 172.327)
+states/Start/position = Vector2(60, 81.0864)
+transitions = ["Basic_Attack_Attack1", "Basic_Attack_Attack2", SubResource("AnimationNodeStateMachineTransition_oko72"), "Basic_Attack_Attack2", "Basic_Attack_Attack3", SubResource("AnimationNodeStateMachineTransition_m3c53"), "Basic_Attack_Attack3", "End", SubResource("AnimationNodeStateMachineTransition_l0ykc"), "Basic_Attack_Attack2", "End", SubResource("AnimationNodeStateMachineTransition_6rvgi"), "Basic_Attack_Attack1", "End", SubResource("AnimationNodeStateMachineTransition_k25te"), "Special_Attacks_Charged_Attack", "End", SubResource("AnimationNodeStateMachineTransition_6q8qg"), "Start", "Basic_Attack_Attack1", SubResource("AnimationNodeStateMachineTransition_lfyow"), "Start", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_k252m")]
+graph_offset = Vector2(-242.028, -34.977)
+>>>>>>> Stashed changes
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lcc53"]
 animation = &"Movement/Idle"
@@ -500,13 +983,18 @@ states/up/position = Vector2(633.333, 95.3333)
 transitions = ["Start", "down", SubResource("AnimationNodeStateMachineTransition_u2oag"), "down", "up", SubResource("AnimationNodeStateMachineTransition_c51df"), "up", "down", SubResource("AnimationNodeStateMachineTransition_rq5is")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gbtkq"]
+<<<<<<< Updated upstream
 graph_offset = Vector2(-632.421, 120.002)
+=======
+graph_offset = Vector2(-697.481, 310.165)
+>>>>>>> Stashed changes
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ke5ev")
 nodes/TimeScale/position = Vector2(106.667, 160)
 nodes/walking/node = SubResource("AnimationNodeStateMachine_dqnwj")
 nodes/walking/position = Vector2(-133.333, 186.667)
 node_connections = [&"TimeScale", 0, &"walking", &"output", 0, &"TimeScale"]
 
+<<<<<<< Updated upstream
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hlcvj"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dvku0"]
@@ -518,10 +1006,16 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5wrp8"]
 
+=======
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5v4yl"]
+advance_mode = 2
+
+>>>>>>> Stashed changes
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vi82s"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ki4yo"]
 
+<<<<<<< Updated upstream
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7bx60"]
 states/Attacking/node = SubResource("AnimationNodeStateMachine_tlcan")
 states/Attacking/position = Vector2(412, 18)
@@ -531,27 +1025,78 @@ states/Start/position = Vector2(78.6667, 75.1113)
 states/Walk/node = SubResource("AnimationNodeBlendTree_gbtkq")
 states/Walk/position = Vector2(506.667, 104.667)
 transitions = ["Attacking", "Walk", SubResource("AnimationNodeStateMachineTransition_hlcvj"), "Walk", "Attacking", SubResource("AnimationNodeStateMachineTransition_dvku0"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5v4yl"), "Idle", "Attacking", SubResource("AnimationNodeStateMachineTransition_42867"), "Attacking", "Idle", SubResource("AnimationNodeStateMachineTransition_5wrp8"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_vi82s"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ki4yo")]
+=======
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a5qct"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7wybc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ajm85"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwmkd"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7bx60"]
+states/Attacking/node = SubResource("AnimationNodeStateMachine_tlcan")
+states/Attacking/position = Vector2(-30.6667, -2)
+states/End/position = Vector2(202.667, 77.3333)
+states/Idle/node = SubResource("AnimationNodeStateMachine_atuc2")
+states/Idle/position = Vector2(-107, 83.5719)
+states/Start/position = Vector2(-246.667, 83.1262)
+states/Walk/node = SubResource("AnimationNodeBlendTree_gbtkq")
+states/Walk/position = Vector2(62.667, 84.3268)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5v4yl"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_vi82s"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_ki4yo"), "Attacking", "Idle", SubResource("AnimationNodeStateMachineTransition_a5qct"), "Idle", "Attacking", SubResource("AnimationNodeStateMachineTransition_7wybc"), "Attacking", "Walk", SubResource("AnimationNodeStateMachineTransition_ajm85"), "Walk", "Attacking", SubResource("AnimationNodeStateMachineTransition_hwmkd")]
+>>>>>>> Stashed changes
 graph_offset = Vector2(-288, -37.2109)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1w1lc"]
 radius = 8.0
 height = 28.0
 
+<<<<<<< Updated upstream
 [node name="CharacterBody2D" type="CharacterBody2D"]
+=======
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dln58"]
+shader = ExtResource("6_blieh")
+shader_parameter/max_col_b = 0.22
+
+[sub_resource type="Gradient" id="Gradient_w6sih"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.16, 0.268, 0.28, 0.296, 0.3)
+colors = PackedColorArray(1, 1, 1, 1, 0.0427808, 0.0427808, 0.0427808, 1, 0.0398967, 0.0398967, 0.0398967, 1, 0.0427808, 0.0427808, 0.0427808, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmyj2"]
+gradient = SubResource("Gradient_w6sih")
+width = 79
+fill = 1
+fill_from = Vector2(0.490029, 0.464387)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-550, 0)
+>>>>>>> Stashed changes
 script = ExtResource("1_73irl")
 metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 100)
+<<<<<<< Updated upstream
 texture = ExtResource("2_t5auf")
 offset = Vector2(0, -100)
 hframes = 6
+=======
+texture = ExtResource("2_7t0t4")
+offset = Vector2(0, -100)
+hframes = 7
+>>>>>>> Stashed changes
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ierlj"),
 "Basic_Attack": SubResource("AnimationLibrary_ff5wd"),
+<<<<<<< Updated upstream
 "Movement": SubResource("AnimationLibrary_2a6sw")
+=======
+"Movement": SubResource("AnimationLibrary_2a6sw"),
+"Special_Attacks": SubResource("AnimationLibrary_pi17t")
+>>>>>>> Stashed changes
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -559,7 +1104,12 @@ active = false
 libraries = {
 "": SubResource("AnimationLibrary_ierlj"),
 "Basic_Attack": SubResource("AnimationLibrary_ff5wd"),
+<<<<<<< Updated upstream
 "Movement": SubResource("AnimationLibrary_2a6sw")
+=======
+"Movement": SubResource("AnimationLibrary_2a6sw"),
+"Special_Attacks": SubResource("AnimationLibrary_pi17t")
+>>>>>>> Stashed changes
 }
 tree_root = SubResource("AnimationNodeStateMachine_7bx60")
 advance_expression_base_node = NodePath("../AnimationPlayer")
@@ -580,6 +1130,7 @@ zoom = Vector2(0.7, 0.7)
 [node name="AttackHandler" type="Node2D" parent="."]
 script = ExtResource("6_u2wun")
 
+<<<<<<< Updated upstream
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("4_fxp3h")
 
@@ -590,6 +1141,27 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_768bu")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D/Weapon"]
+=======
+[node name="Charged_attack_timer" type="Timer" parent="AttackHandler"]
+one_shot = true
+
+[node name="horizontality" type="Node2D" parent="."]
+
+[node name="weapon_pivot" type="Node2D" parent="horizontality"]
+z_index = 2
+position = Vector2(-16, 62)
+script = ExtResource("4_fxp3h")
+
+[node name="Weapon" type="Sprite2D" parent="horizontality/weapon_pivot"]
+z_index = 1
+position = Vector2(1, -9.11841)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_y2csa")
+offset = Vector2(0, -60)
+hframes = 6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="horizontality/weapon_pivot/Weapon"]
+>>>>>>> Stashed changes
 position = Vector2(427.635, -51.0348)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -606,3 +1178,17 @@ scale_amount_max = 9.37
 color = Color(1, 0.494118, 1, 1)
 hue_variation_min = -0.7
 hue_variation_max = 0.2
+<<<<<<< Updated upstream
+=======
+
+[node name="TextureRect" type="TextureRect" parent="horizontality/weapon_pivot/Weapon"]
+z_index = 1
+material = SubResource("ShaderMaterial_dln58")
+offset_left = -38.6666
+offset_top = -26.5088
+offset_right = 40.3334
+offset_bottom = 37.4912
+texture = SubResource("GradientTexture2D_dmyj2")
+
+[connection signal="timeout" from="AttackHandler/Charged_attack_timer" to="AttackHandler" method="_on_charged_attack_timer_timeout"]
+>>>>>>> Stashed changes

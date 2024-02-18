@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c24kesuvfmya"]
+[gd_scene load_steps=7 format=3 uid="uid://c24kesuvfmya"]
 
-[ext_resource type="PackedScene" uid="uid://b0jxock7arpsl" path="res://Player/Player.tscn" id="1_5ncex"]
+[ext_resource type="PackedScene" uid="uid://ds5q6nvteeicm" path="res://Player/Player.tscn" id="1_5ncex"]
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
 [ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
 [ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
+[ext_resource type="VideoStream" path="res://insomnia-chan-hot.ogv" id="6_8vaql"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -39,3 +40,10 @@ texture_filter = 1
 position = Vector2(18, 8)
 scale = Vector2(7.5, 7.5)
 texture = ExtResource("5_48iog")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 544.0
+offset_bottom = 640.0
+stream = ExtResource("6_8vaql")
+autoplay = true
+loop = true
