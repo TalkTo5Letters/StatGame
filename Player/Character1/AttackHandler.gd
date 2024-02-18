@@ -4,7 +4,7 @@ var attack_pressed
 var animation_tree
 var state_machine
 var basic_attack_level 
-@export var attacking = false
+@onready var attacking = false
 var charged_attacking = false
 var state_machine_attacking
 
@@ -16,6 +16,7 @@ func _ready():
 	state_machine_attacking = animation_tree.get("parameters/Attacking/playback")
 	player_can_input = true
 	attack_pressed = false
+	$Charged_attack_timer.set_paused(true)
 	basic_attack_level = 0
 	pass # Replace with function body.
 
@@ -30,6 +31,7 @@ func start_charged_attack():
 	charged_attacking = true
 	
 func stop_charged_attack():
+	$Charged_attack_timer.set_paused(true)
 	charged_attacking = false
 
 func can_attack():
@@ -86,7 +88,7 @@ func burst_attack():
 	pass
 
 func check_basic_attack():
-	if Input.is_action_just_pressed("primary") && player_can_input:
+	if Input.is_action_pressed("primary") && player_can_input:
 		if $Charged_attack_timer.is_paused():
 			$Charged_attack_timer.set_paused(false)
 			$Charged_attack_timer.start(1)

@@ -78,16 +78,16 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 		
 
 func reload_stats():
-	hp = CharacterStats.Chara1.get("hp")
-	damage = CharacterStats.Chara1.get("damage")
-	speed = CharacterStats.Chara1.get("speed")
-	crit_dmg = CharacterStats.Chara1.get("crit_dmg")
-	crit_rate = CharacterStats.Chara1.get("crit_rate")
-	attack_speed = CharacterStats.Chara1.get("attack_speed")
+	hp = CharacterStats.Characters.get("Chara2").get("hp")
+	damage = CharacterStats.Characters.get("Chara2").get("damage")
+	speed = CharacterStats.Characters.get("Chara2").get("speed")
+	crit_dmg = CharacterStats.Characters.get("Chara2").get("crit_dmg")
+	crit_rate =CharacterStats.Characters.get("Chara2").get("crit_rate")
+	attack_speed = CharacterStats.Characters.get("Chara2").get("attack_speed")
 	
-	if CharacterStats.Chara1.get("equipped_weapon").is_empty():
-		CharacterStats.Chara1["equipped_weapon"] = 1
-		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Chara1.get("equipped_weapon"))
+	if CharacterStats.Characters.get("Chara2").get("equipped_weapon").is_empty():
+		CharacterStats.Characters.get("Chara2")["equipped_weapon"] = 1
+		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara2").get("equipped_weapon"))
 		if equipped_weapon.has("hp"):
 			hp += equipped_weapon.get("hp")
 		if equipped_weapon.has("damage"):
@@ -101,8 +101,8 @@ func reload_stats():
 		if equipped_weapon.has("attack_speed"):
 			attack_speed += equipped_weapon.get("attack_speed")
 				
-	if CharacterStats.Chara1.get("equipped_artifacts").is_empty() == false:
-		for equipped_artifact_id in CharacterStats.Chara1.get("equipped_artifacts"):
+	if CharacterStats.Characters.get("Chara2").get("equipped_artifacts").is_empty() == false:
+		for equipped_artifact_id in CharacterStats.Characters.get("Chara2").get("equipped_artifacts"):
 			var equipped_artifact = GlobalItemList.Artifacts.get(equipped_artifact_id)
 			if equipped_artifact.has("hp"):
 				hp += equipped_artifact.get("hp")

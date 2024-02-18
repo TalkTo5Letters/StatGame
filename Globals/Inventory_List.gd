@@ -1,4 +1,4 @@
 extends Node
 
 
-var Weapons = [1]
+var Weapons = [1,1,1,1]

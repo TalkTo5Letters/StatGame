@@ -1,10 +1,10 @@
-[gd_scene load_steps=55 format=3 uid="uid://b0jxock7arpsl"]
+[gd_scene load_steps=55 format=3 uid="uid://do8ydv0tkvq88"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_73irl"]
-[ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_t5auf"]
-[ext_resource type="Script" path="res://Player/wapon.gd" id="4_fxp3h"]
-[ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_768bu"]
-[ext_resource type="Script" path="res://Player/AttackHandler.gd" id="6_u2wun"]
+[ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_uhdnc"]
+[ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_emx6a"]
+[ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
+[ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="5_7bpqp"]
+[ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_wpfsg"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
 length = 0.001
@@ -202,9 +202,12 @@ tracks/2/path = NodePath("AttackHandler")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_attack"
+}, {
 "args": [],
 "method": &"attack_done"
 }]
@@ -619,12 +622,12 @@ height = 28.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(-550, 0)
-script = ExtResource("1_73irl")
+script = ExtResource("1_uhdnc")
 metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 100)
-texture = ExtResource("2_t5auf")
+texture = ExtResource("2_emx6a")
 offset = Vector2(0, -100)
 hframes = 6
 
@@ -657,22 +660,20 @@ visible = false
 shape = SubResource("CapsuleShape2D_1w1lc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.8, 0.8)
 
 [node name="AttackHandler" type="Node2D" parent="."]
-script = ExtResource("6_u2wun")
+script = ExtResource("3_oytl6")
 
 [node name="Charged_attack_timer" type="Timer" parent="AttackHandler"]
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("4_fxp3h")
+script = ExtResource("5_7bpqp")
 
 [node name="Weapon" type="Sprite2D" parent="Node2D"]
-position = Vector2(0, 50)
-rotation = -2.28464
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_768bu")
+texture = ExtResource("5_wpfsg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D/Weapon"]
 position = Vector2(427.635, -51.0348)

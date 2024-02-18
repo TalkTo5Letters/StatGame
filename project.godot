@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 CharacterStats="*res://Globals/Character_Stats.gd"
 InventoryList="*res://Globals/Inventory_List.gd"
 GlobalItemList="*res://Globals/Item_List.gd"
+PartyList="*res://Globals/Party_List.gd"
+Signals="*res://Globals/Signals.gd"
 
 [input]
 
