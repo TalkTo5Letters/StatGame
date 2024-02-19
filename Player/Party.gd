@@ -31,24 +31,34 @@ func load_party():
 func check_character_switch() -> bool:
 	if Input.is_action_just_pressed("Character1"):
 		print("Character1")
-		if !party[1].is_empty():
+		if party[1] != "empty":
 			current_chara_index = 0
-		return true
+			return true
+		else: 
+			return false
+			
 	elif Input.is_action_just_pressed("Character2"):
-		if !party[1].is_empty():
-			current_chara_index = 1
 		print("Character2")
-		return true
+		if party[1] != "empty":
+			current_chara_index = 1
+			return true
+		else: 
+			return false
+		
 	elif Input.is_action_just_pressed("Character3"):
-		if !party[2].is_empty():
-			current_chara_index = 2
 		print("Character3")
-		return true
+		if party[2] != "empty":
+			current_chara_index = 2
+			return true
+		else: 
+			return false
 	elif Input.is_action_just_pressed("Character4"):
-		if !party[3].is_empty():
-			current_chara_index = 3
 		print("Character4")
-		return true
+		if party[3] != "empty":
+			current_chara_index = 3
+			return true
+		else: 
+			return false
 	else:
 		return false
 

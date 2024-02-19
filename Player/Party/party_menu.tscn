@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2u4o1p3t3s2d"]
+
+[ext_resource type="Script" path="res://Player/Party/party_menu.gd" id="1_euu62"]
+
+[node name="PartyMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_euu62")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.352941)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Character 1"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 4.0
+offset_right = 204.0
+offset_bottom = 35.0
+text = "Character 2"
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 4.0
+offset_right = 318.0
+offset_bottom = 35.0
+text = "Character 3"
+
+[node name="Button4" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 4.0
+offset_right = 427.0
+offset_bottom = 35.0
+text = "Character 4"
+
+[node name="Button5" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 6.0
+offset_right = 584.0
+offset_bottom = 37.0
+text = "Party Selection"

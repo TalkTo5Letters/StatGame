@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://do8ydv0tkvq88"]
+[gd_scene load_steps=55 format=3 uid="uid://do8ydv0tkvq88"]
 
 [ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_uhdnc"]
 [ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_emx6a"]
@@ -516,12 +516,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k252m"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5unl0"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_565jj"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ft8lu"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tlcan"]
 state_machine_type = 1
 allow_transition_to_self = true
@@ -534,7 +528,7 @@ states/Basic_Attack_Attack3/position = Vector2(417.975, -55.6731)
 states/Special_Attacks_Charged_Attack/node = SubResource("AnimationNodeAnimation_ybvif")
 states/Special_Attacks_Charged_Attack/position = Vector2(640.444, 276.327)
 states/Start/position = Vector2(58.6667, 79.7531)
-transitions = ["Basic_Attack_Attack1", "Basic_Attack_Attack2", SubResource("AnimationNodeStateMachineTransition_oko72"), "Basic_Attack_Attack2", "Basic_Attack_Attack3", SubResource("AnimationNodeStateMachineTransition_m3c53"), "Basic_Attack_Attack3", "End", SubResource("AnimationNodeStateMachineTransition_l0ykc"), "Basic_Attack_Attack2", "End", SubResource("AnimationNodeStateMachineTransition_6rvgi"), "Basic_Attack_Attack1", "End", SubResource("AnimationNodeStateMachineTransition_k25te"), "Special_Attacks_Charged_Attack", "End", SubResource("AnimationNodeStateMachineTransition_6q8qg"), "Start", "Basic_Attack_Attack1", SubResource("AnimationNodeStateMachineTransition_lfyow"), "Start", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_k252m"), "Basic_Attack_Attack3", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_5unl0"), "Basic_Attack_Attack2", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_565jj"), "Basic_Attack_Attack1", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_ft8lu")]
+transitions = ["Basic_Attack_Attack1", "Basic_Attack_Attack2", SubResource("AnimationNodeStateMachineTransition_oko72"), "Basic_Attack_Attack2", "Basic_Attack_Attack3", SubResource("AnimationNodeStateMachineTransition_m3c53"), "Basic_Attack_Attack3", "End", SubResource("AnimationNodeStateMachineTransition_l0ykc"), "Basic_Attack_Attack2", "End", SubResource("AnimationNodeStateMachineTransition_6rvgi"), "Basic_Attack_Attack1", "End", SubResource("AnimationNodeStateMachineTransition_k25te"), "Special_Attacks_Charged_Attack", "End", SubResource("AnimationNodeStateMachineTransition_6q8qg"), "Start", "Basic_Attack_Attack1", SubResource("AnimationNodeStateMachineTransition_lfyow"), "Start", "Special_Attacks_Charged_Attack", SubResource("AnimationNodeStateMachineTransition_k252m")]
 graph_offset = Vector2(-121.433, 77.9874)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lcc53"]

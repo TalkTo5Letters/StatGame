@@ -31,3 +31,24 @@ var Artifacts = {
 			}
 	}
 }
+
+var Consumables = {
+	201: {
+		"name": "Ikuyo Kita", 
+		"description": "idk", 
+		"texture": "res://Graphics/Consumables/maxresdefault(1).png",
+		"effects": {
+			"damage" : 10,
+			"crit_dmg": 25
+			}
+		},
+	202: {
+		"name": "Yabe Ring", 
+		"description": "\"Erm\"", 
+		"texture": "res://Graphics/Accessories/35x35_Rings/35x35_Rings/Ring_18.png",
+		"effects": {
+			"damage" : 5,
+			"crit_rate": 50
+			}
+	}
+}

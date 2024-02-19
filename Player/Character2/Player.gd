@@ -88,35 +88,35 @@ func reload_stats():
 	
 	if CharacterStats.Characters.get("Chara2").get("equipped_weapon") == null:
 		CharacterStats.Characters.get("Chara2")["equipped_weapon"] = 1
-		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara2").get("equipped_weapon"))
-		if equipped_weapon.get("effect").get("hp"):
-			hp += equipped_weapon.get("effect").get("hp")
-		if equipped_weapon.get("effect").get("damage"):
-			damage += equipped_weapon.get("effect").get("damage")
-		if equipped_weapon.get("effect").get("speed"):
-			speed += equipped_weapon.get("effect").get("speed")
-		if equipped_weapon.get("effect").get("crit_dmg"):
-			crit_dmg += equipped_weapon.get("effect").get("crit_dmg")
-		if equipped_weapon.get("effect").get("crit_rate"):
-			crit_rate += equipped_weapon.get("effect").get("crit_rate")
-		if equipped_weapon.get("effect").get("attack_speed"):
-			attack_speed += equipped_weapon.get("effect").get("attack_speed")
+		var equipped_weapon = GlobalItemList.Weapons.get(CharacterStats.Characters.get("Chara2").get("equipped_weapon")).get("effects")
+		if equipped_weapon.has("hp"):
+			hp += equipped_weapon.get("hp")
+		if equipped_weapon.has("damage"):
+			damage += equipped_weapon.get("damage")
+		if equipped_weapon.has("speed"):
+			speed += equipped_weapon.get("speed")
+		if equipped_weapon.has("crit_dmg"):
+			crit_dmg += equipped_weapon.get("crit_dmg")
+		if equipped_weapon.has("crit_rate"):
+			crit_rate += equipped_weapon.get("crit_rate")
+		if equipped_weapon.has("attack_speed"):
+			attack_speed += equipped_weapon.get("attack_speed")
 				
 	if CharacterStats.Characters.get("Chara2").get("equipped_artifacts").is_empty() == false:
 		for equipped_artifact_id in CharacterStats.Characters.get("Chara2").get("equipped_artifacts"):
-			var equipped_artifact = GlobalItemList.Artifacts.get(equipped_artifact_id)
-			if equipped_artifact.get("effect").get("hp"):
-				hp += equipped_artifact.get("effect").get("hp")
-			if equipped_artifact.get("effect").get("damage"):
-				damage += equipped_artifact.get("effect").get("damage")
-			if equipped_artifact.get("effect").get("speed"):
-				speed += equipped_artifact.get("effect").get("speed")
-			if equipped_artifact.get("effect").get("crit_dmg"):
-				crit_dmg += equipped_artifact.get("effect").get("crit_dmg")
-			if equipped_artifact.get("effect").get("crit_rate"):
-				crit_rate += equipped_artifact.get("effect").get("crit_rate")
-			if equipped_artifact.get("effect").get("attack_speed"):
-				attack_speed += equipped_artifact.get("effect").get("attack_speed")
+			var equipped_artifact = GlobalItemList.Artifacts.get(equipped_artifact_id).get("effects")
+			if equipped_artifact.has("hp"):
+				hp += equipped_artifact.get("hp")
+			if equipped_artifact.has("damage"):
+				damage += equipped_artifact.get("damage")
+			if equipped_artifact.has("speed"):
+				speed += equipped_artifact.get("speed")
+			if equipped_artifact.has("crit_dmg"):
+				crit_dmg += equipped_artifact.get("crit_dmg")
+			if equipped_artifact.has("crit_rate"):
+				crit_rate += equipped_artifact.get("crit_rate")
+			if equipped_artifact.has("attack_speed"):
+				attack_speed += equipped_artifact.get("attack_speed")
 			
 	print(hp)
 	print(damage)

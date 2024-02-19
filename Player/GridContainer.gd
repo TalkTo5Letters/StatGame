@@ -23,6 +23,11 @@ func load_inv():
 				var artifact_inv = preload("res://Player/Inventory/Artifacts/artifact_slot_inv.tscn").instantiate()
 				artifact_inv.artifact_data = GlobalItemList.Artifacts.get(i)
 				add_child(artifact_inv)
+		"consumables":
+			for i in InventoryList.Consumables:
+				var consumable_inv = preload("res://Player/Inventory/Consumables/consumables_slot_inv.tscn").instantiate()
+				consumable_inv.consumable_data = GlobalItemList.Consumables.get(i)
+				add_child(consumable_inv)
 
 func clear_inv():
 	for n in get_children():
