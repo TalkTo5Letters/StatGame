@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
-[ext_resource type="PackedScene" uid="uid://do8ydv0tkvq88" path="res://Player/Character1/Chara1.tscn" id="2_lori0"]
 [ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
+[ext_resource type="PackedScene" uid="uid://b2u4o1p3t3s2d" path="res://Player/Party/party_menu.tscn" id="4_gskhg"]
 [ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
 [ext_resource type="VideoStream" path="res://insomnia-chan-hot.ogv" id="6_8vaql"]
 
@@ -11,14 +11,13 @@
 
 [node name="Party" parent="." instance=ExtResource("1_e65cb")]
 
-[node name="Character1" parent="Party" instance=ExtResource("2_lori0")]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(-144, 95)
 texture = ExtResource("2_u0o4u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_haq2p")]
 process_mode = 3
@@ -31,6 +30,9 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="PartyMenu" parent="CanvasLayer" instance=ExtResource("4_gskhg")]
+visible = false
 
 [node name="1GhgDm-plan" type="Sprite2D" parent="."]
 z_index = -2

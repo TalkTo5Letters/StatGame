@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/Character2/Player.gd" id="1_qve5m"]
 [ext_resource type="Texture2D" uid="uid://3is2frf40b6q" path="res://Animations/dummy_spritesheet2.png" id="2_8erng"]
 [ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
-[ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="5_7bpqp"]
+[ext_resource type="Script" path="res://Player/Character2/Node2D.gd" id="4_jsfgn"]
 [ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_wpfsg"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
@@ -670,7 +670,7 @@ script = ExtResource("3_oytl6")
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("5_7bpqp")
+script = ExtResource("4_jsfgn")
 
 [node name="Weapon" type="Sprite2D" parent="Node2D"]
 scale = Vector2(0.5, 0.5)

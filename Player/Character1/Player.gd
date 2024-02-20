@@ -69,7 +69,6 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 		state_machine.travel("Idle")
 		
 	
-	print(mouse_angle)
 	if (mouse_angle > 90 and mouse_angle < 180) or (mouse_angle > -180 and mouse_angle < -90):
 		$weapon_horizontality["scale"] = Vector2(1,1)
 	else:

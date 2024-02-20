@@ -25,10 +25,10 @@ func open_party_control():
 	add_sibling(party_control)
 	queue_free()
 
-
-func _on_button_5_button_down():
-	open_party_control()
-
 func update_party():
 	$"../../Party".update_bar()
 	$"../../Party".switch_characters()
+
+
+func _on_button_5_pressed():
+	open_party_control()

@@ -4,7 +4,7 @@ var attack_pressed
 var animation_tree
 var state_machine
 var basic_attack_level 
-@onready var attacking = false
+var attacking
 var charged_attacking = false
 var state_machine_attacking
 
@@ -14,6 +14,7 @@ func _ready():
 	animation_tree = $"../AnimationTree"
 	state_machine = animation_tree.get("parameters/playback")
 	state_machine_attacking = animation_tree.get("parameters/Attacking/playback")
+	attacking = false
 	player_can_input = true
 	attack_pressed = false
 	$Charged_attack_timer.set_paused(true)
