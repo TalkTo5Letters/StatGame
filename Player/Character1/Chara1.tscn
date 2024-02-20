@@ -1,10 +1,11 @@
-[gd_scene load_steps=55 format=3 uid="uid://do8ydv0tkvq88"]
+[gd_scene load_steps=59 format=3 uid="uid://do8ydv0tkvq88"]
 
 [ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_uhdnc"]
-[ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_emx6a"]
+[ext_resource type="Texture2D" path="res://Graphics/Player/dummy_armless_spritesheet.png" id="2_cgdf5"]
 [ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
+[ext_resource type="Texture2D" path="res://Graphics/Player/dummy_CANDYWEAPON_spritesheet.png" id="5_6qey0"]
 [ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="5_7bpqp"]
-[ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_wpfsg"]
+[ext_resource type="Shader" path="res://Player/Character1/hands.gdshader" id="6_wur6m"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
 length = 0.001
@@ -69,6 +70,78 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon_horizontality/weapon_pivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.64211e-05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 48), Vector2(-22, 49)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.000527519),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, -65)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.000301809),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.000146201),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(8.29376e-07),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("weapon_horizontality/weapon_pivot:skew")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ierlj"]
 _data = {
@@ -80,7 +153,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Weapon:rotation")
+tracks/0/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +165,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Weapon:position")
+tracks/1/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,7 +200,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Weapon:rotation")
+tracks/0/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +212,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Weapon:position")
+tracks/1/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -174,7 +247,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/Weapon:position")
+tracks/0/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,7 +259,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Weapon:rotation")
+tracks/1/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -269,6 +342,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0139626, -0.00349066]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("weapon_horizontality/weapon_pivot:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 48), Vector2(-23, 56)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("weapon_horizontality/weapon_pivot:skew")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0942478]
 }
 
 [sub_resource type="Animation" id="Animation_rn1ik"]
@@ -430,7 +527,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/Weapon:position")
+tracks/1/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -465,7 +562,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/Weapon:rotation")
+tracks/3/path = NodePath("weapon_horizontality/weapon_pivot/Weapon:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -621,6 +718,20 @@ graph_offset = Vector2(-489.536, -37.2109)
 radius = 8.0
 height = 28.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqpbb"]
+shader = ExtResource("6_wur6m")
+shader_parameter/max_col_b = 0.22
+
+[sub_resource type="Gradient" id="Gradient_cqp2r"]
+offsets = PackedFloat32Array(0.217391, 0.226087, 0.278261, 0.713043)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f446s"]
+gradient = SubResource("Gradient_cqp2r")
+width = 76
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Character1" type="CharacterBody2D"]
 position = Vector2(-550, 0)
 collision_mask = 2
@@ -629,9 +740,9 @@ metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 100)
-texture = ExtResource("2_emx6a")
+texture = ExtResource("2_cgdf5")
 offset = Vector2(0, -100)
-hframes = 6
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -670,14 +781,19 @@ script = ExtResource("3_oytl6")
 [node name="Charged_attack_timer" type="Timer" parent="AttackHandler"]
 one_shot = true
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="weapon_horizontality" type="Node2D" parent="."]
+
+[node name="weapon_pivot" type="Node2D" parent="weapon_horizontality"]
+position = Vector2(-25, 48)
 script = ExtResource("5_7bpqp")
 
-[node name="Weapon" type="Sprite2D" parent="Node2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_wpfsg")
+[node name="Weapon" type="Sprite2D" parent="weapon_horizontality/weapon_pivot"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_6qey0")
+offset = Vector2(2.5, -65)
+hframes = 6
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D/Weapon"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="weapon_horizontality/weapon_pivot/Weapon"]
 position = Vector2(427.635, -51.0348)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -694,5 +810,13 @@ scale_amount_max = 9.37
 color = Color(1, 0.494118, 1, 1)
 hue_variation_min = -0.7
 hue_variation_max = 0.2
+
+[node name="hand" type="TextureRect" parent="weapon_horizontality/weapon_pivot/Weapon"]
+material = SubResource("ShaderMaterial_nqpbb")
+offset_left = -37.5
+offset_top = -30.0
+offset_right = 38.5
+offset_bottom = 34.0
+texture = SubResource("GradientTexture2D_f446s")
 
 [connection signal="timeout" from="AttackHandler/Charged_attack_timer" to="AttackHandler" method="_on_charged_attack_timer_timeout"]
