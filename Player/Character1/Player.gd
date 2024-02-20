@@ -4,6 +4,7 @@ var animation_tree
 var state_machine
 var input_direction
 var player_sprite
+var mouse_angle
 
 var hp
 var damage
@@ -22,7 +23,7 @@ var character_name
 func _ready():
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
-	player_sprite = $Sprite2D
+	player_sprite = $Player_Sprite
 	state_machine = animation_tree.get("parameters/playback")
 	animation_tree["active"] = true
 	CharacterStats = get_node("/root/CharacterStats")
@@ -47,13 +48,16 @@ func movement():
 		update_animation_parameters(direction, false)
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	move_and_slide()
-
+	
+	
 func _physics_process(delta):
 	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
 		get_input()
 		movement()
 
 func update_animation_parameters(move_input : Vector2, sprint: bool):
+	var mouse_position = get_global_mouse_position()
+	var mouse_angle = rad_to_deg(get_angle_to(mouse_position))
 	if move_input.length() > 0:
 		if sprint:
 			animation_tree.set("parameters/Walk/TimeScale/scale", 2)
@@ -65,18 +69,29 @@ func update_animation_parameters(move_input : Vector2, sprint: bool):
 		state_machine.travel("Idle")
 		
 	
-
+	print(mouse_angle)
+	if (mouse_angle > 90 and mouse_angle < 180) or (mouse_angle > -180 and mouse_angle < -90):
+		$weapon_horizontality["scale"] = Vector2(1,1)
+	else:
+		$weapon_horizontality["scale"] = Vector2(-1,1)
+		
 	if move_input.x > 0:
-			player_sprite["flip_h"] = true
+			player_sprite["scale"] = Vector2(-1,1)
 	if move_input.x < 0:
-			player_sprite["flip_h"] = false
-	
-	if move_input.y < 0:
+			player_sprite["scale"] = Vector2(1,1)
+
+	if move_input.y < 0 || (mouse_angle >= -170 and mouse_angle <= -10):
 		animation_tree["parameters/Walk/walking/conditions/facing_up"] = true
 		animation_tree["parameters/Walk/walking/conditions/facing_down"] = false
+		animation_tree["parameters/Idle/conditions/facing_down"] = false
+		animation_tree["parameters/Idle/conditions/facing_up"] = true
+		$weapon_horizontality["z_index"] = -1
 	else:
 		animation_tree["parameters/Walk/walking/conditions/facing_up"] = false
 		animation_tree["parameters/Walk/walking/conditions/facing_down"] = true
+		animation_tree["parameters/Idle/conditions/facing_down"] = true
+		animation_tree["parameters/Idle/conditions/facing_up"] = false
+		$weapon_horizontality["z_index"] = 0
 		
 
 func reload_stats():
