@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfcv04k6ojo78"]
+
+[ext_resource type="Script" path="res://party_control.gd" id="1_xbv6f"]
+
+[node name="PartyControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbv6f")
+
+[node name="Character1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 150.0
+offset_right = 260.0
+offset_bottom = 500.0
+
+[node name="TextureRect" type="TextureRect" parent="Character1"]
+z_index = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Character2" type="Button" parent="."]
+offset_left = 320.0
+offset_top = 150.0
+offset_right = 520.0
+offset_bottom = 500.0
+
+[node name="TextureRect" type="TextureRect" parent="Character2"]
+z_index = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Character3" type="Button" parent="."]
+offset_left = 580.0
+offset_top = 150.0
+offset_right = 780.0
+offset_bottom = 500.0
+
+[node name="TextureRect" type="TextureRect" parent="Character3"]
+z_index = -1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Character4" type="Button" parent="."]
+offset_left = 840.0
+offset_top = 150.0
+offset_right = 1040.0
+offset_bottom = 500.0
+
+[node name="TextureRect" type="TextureRect" parent="Character4"]
+z_index = 1
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="Character1" to="." method="_on_character_1_pressed"]
+[connection signal="pressed" from="Character2" to="." method="_on_character_2_pressed"]
+[connection signal="pressed" from="Character3" to="." method="_on_character_3_pressed"]
+[connection signal="pressed" from="Character4" to="." method="_on_character_4_pressed"]

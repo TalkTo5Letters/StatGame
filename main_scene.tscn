@@ -37,6 +37,7 @@ offset_bottom = 23.0
 script = ExtResource("4_45sst")
 
 [node name="PartyMenu" parent="CanvasLayer" instance=ExtResource("5_nr012")]
+visible = false
 
 [node name="1GhgDm-plan" type="Sprite2D" parent="."]
 z_index = -2

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxvgs3ypixxba"]
+
+[ext_resource type="Script" path="res://party_select.gd" id="1_n0nt0"]
+
+[node name="PartySelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n0nt0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 840.0
+offset_bottom = 647.0
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 120
+theme_override_constants/v_separation = 200
+columns = 6

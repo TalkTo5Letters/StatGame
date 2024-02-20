@@ -1,14 +1,14 @@
 extends Control
-var is_open 
+var Inv_is_open = false
 
 func _input(event):
-	if event.is_action_pressed("inventory") && is_open != true:
+	if event.is_action_pressed("inventory") && Inv_is_open != true:
 		open()
-	if event.is_action_pressed("escape")  && is_open != false:
+	if event.is_action_pressed("escape")  && Inv_is_open != false:
 		close()
 
 func open():
-	is_open = true
+	Inv_is_open = true
 	get_tree().paused = true
 	$GridContainer.load_inv()
 	visible = true
@@ -16,5 +16,5 @@ func open():
 func close():
 	$GridContainer.clear_inv()
 	get_tree().paused = false
-	is_open = false
+	Inv_is_open = false
 	visible = false

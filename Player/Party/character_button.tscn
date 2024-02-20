@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c65vbm2xiv4ae"]
+
+[ext_resource type="Script" path="res://CharacterButton.gd" id="1_8pgnq"]
+
+[node name="CharacterButton" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -473.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8pgnq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 175.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 175.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 175.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

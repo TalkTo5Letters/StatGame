@@ -5,6 +5,7 @@ var Characters = {
 	"Chara1": {
 		"name": "Shibuya Kanon",
 		"scene_path": "res://Player/Character1/Chara1.tscn",
+		"texture": "res://Graphics/Player/Kanon_Shibuya.png",
 		"weapon": "Sword",
 		"current_status": "alive", #dead, alive, locked
 		"hp": 100,
@@ -19,8 +20,9 @@ var Characters = {
 	},
 
 	"Chara2": {
-		"name": "Kousaka Honoka",
+		"name": "Ikuyo Kita",
 		"scene_path": "res://Player/Character2/Chara2.tscn",
+		"texture": "res://Graphics/Player/Ikuyo_Kita_Character_Design_2.png",
 		"weapon": "Sword",
 		"current_status": "alive", #dead, alive, locked
 		"hp": 100,

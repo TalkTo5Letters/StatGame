@@ -23,3 +23,5 @@ offset_right = 1152.0
 offset_bottom = 534.0
 theme_override_constants/separation = 100
 script = ExtResource("2_2ily7")
+
+[node name="Player" type="Node2D" parent="."]

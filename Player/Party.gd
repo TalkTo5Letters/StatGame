@@ -25,8 +25,8 @@ func load_party():
 			var character_scene_path = CharacterStats.Characters.get(i).get("scene_path")
 			if party.find(i) == current_chara_index:
 				current_character = load(character_scene_path).instantiate()
-				add_child(current_character)
-	$CanvasLayer/Control/CharacterGrid.add_charac_to_bar(party)
+				$Player.add_child(current_character)
+	update_bar()
 
 func check_character_switch() -> bool:
 	if Input.is_action_just_pressed("Character1"):
@@ -74,3 +74,6 @@ func switch_characters():
 				current_character = load(character_scene_path).instantiate()
 				current_character.position = PartyList.current_player_pos
 				add_child(current_character)
+
+func update_bar():
+	$CanvasLayer/Control/CharacterGrid.add_charac_to_bar(party)

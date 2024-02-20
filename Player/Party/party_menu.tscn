@@ -59,3 +59,6 @@ offset_top = 6.0
 offset_right = 584.0
 offset_bottom = 37.0
 text = "Party Selection"
+
+[connection signal="button_down" from="Control/Button5" to="." method="_on_button_5_button_down"]
+[connection signal="pressed" from="Control/Button5" to="." method="_on_button_5_pressed"]
