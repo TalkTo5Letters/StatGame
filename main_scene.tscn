@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c24kesuvfmya"]
 
-[ext_resource type="PackedScene" uid="uid://ds5q6nvteeicm" path="res://Player/Player.tscn" id="1_5ncex"]
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
+[ext_resource type="PackedScene" uid="uid://do8ydv0tkvq88" path="res://Player/Character1/Chara1.tscn" id="2_lori0"]
 [ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
 [ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
 [ext_resource type="VideoStream" path="res://insomnia-chan-hot.ogv" id="6_8vaql"]
@@ -10,10 +10,8 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Party" parent="." instance=ExtResource("1_e65cb")]
-scale = Vector2(0.2, 0.2)
 
-[node name="CharacterBody2D" parent="Party" instance=ExtResource("1_5ncex")]
-scale = Vector2(5, 5)
+[node name="Character1" parent="Party" instance=ExtResource("2_lori0")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

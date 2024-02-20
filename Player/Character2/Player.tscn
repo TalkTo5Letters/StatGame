@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://b0jxock7arpsl"]
 
-[ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_73irl"]
+[ext_resource type="Script" path="res://Player/Character2/Player.gd" id="1_xj8xj"]
 [ext_resource type="Texture2D" uid="uid://c2tcusxcebr2q" path="res://Animations/dummy_spritesheet.png" id="2_t5auf"]
 [ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="4_fxp3h"]
 [ext_resource type="Texture2D" uid="uid://328p5xtmrscy" path="res://Graphics/Player/580b57fcd9996e24bc43c301.png" id="5_768bu"]
@@ -622,7 +622,7 @@ height = 28.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(-550, 0)
-script = ExtResource("1_73irl")
+script = ExtResource("1_xj8xj")
 metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
