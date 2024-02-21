@@ -139,3 +139,6 @@ func reload_stats():
 	print(crit_dmg)
 	print(crit_rate)
 	print(attack_speed)
+
+func take_damage(damage):
+	print("Player has taken " + str(damage) + " amount of damage")

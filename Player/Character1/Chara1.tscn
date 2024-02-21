@@ -1,11 +1,13 @@
-[gd_scene load_steps=59 format=3 uid="uid://do8ydv0tkvq88"]
+[gd_scene load_steps=65 format=3 uid="uid://do8ydv0tkvq88"]
 
 [ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_uhdnc"]
 [ext_resource type="Texture2D" uid="uid://cscag36lucya3" path="res://Graphics/Player/dummy_armless_spritesheet.png" id="2_cgdf5"]
 [ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
+[ext_resource type="Script" path="res://Player/Character1/BasicAttack.gd" id="4_kbwwk"]
 [ext_resource type="Texture2D" uid="uid://c5nlo453ksl68" path="res://Graphics/Player/dummy_CANDYWEAPON_spritesheet.png" id="5_6qey0"]
 [ext_resource type="Script" path="res://Player/Character1/wapon.gd" id="5_7bpqp"]
 [ext_resource type="Shader" path="res://Player/Character1/hands.gdshader" id="6_wur6m"]
+[ext_resource type="Script" path="res://Player/Character1/AggroHandler.gd" id="8_qyx3t"]
 
 [sub_resource type="Animation" id="Animation_iidpk"]
 length = 0.001
@@ -302,6 +304,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [0.0, 0.0, -0.349066, 0.349066, 0.349066, 0.0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AttackHandler/BasicAttack:monitoring")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_xbyvr"]
 length = 0.7
@@ -433,6 +447,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0.85), Vector2(1, 1.1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AttackHandler/BasicAttack:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_4v8hu"]
 length = 0.9
@@ -536,6 +562,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [6, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AttackHandler/third_attack:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ff5wd"]
@@ -958,6 +996,13 @@ graph_offset = Vector2(-489.536, -37.2109)
 radius = 8.0
 height = 28.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy665"]
+radius = 92.5
+height = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_racqx"]
+radius = 217.73
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqpbb"]
 shader = ExtResource("6_wur6m")
 shader_parameter/max_col_b = 0.22
@@ -971,6 +1016,12 @@ gradient = SubResource("Gradient_cqp2r")
 width = 76
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3h4ff"]
+radius = 432.565
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_advw2"]
+radius = 153.648
 
 [node name="Character1" type="CharacterBody2D"]
 position = Vector2(-550, 0)
@@ -1026,6 +1077,26 @@ script = ExtResource("3_oytl6")
 wait_time = 0.85
 one_shot = true
 
+[node name="BasicAttack" type="Area2D" parent="AttackHandler"]
+monitoring = false
+script = ExtResource("4_kbwwk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHandler/BasicAttack"]
+position = Vector2(-105, -6.25)
+shape = SubResource("CapsuleShape2D_wy665")
+
+[node name="ColorRect" type="ColorRect" parent="AttackHandler/BasicAttack"]
+offset_left = -108.75
+offset_top = -76.25
+offset_right = -68.75
+offset_bottom = 60.75
+
+[node name="third_attack" type="Area2D" parent="AttackHandler"]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHandler/third_attack"]
+shape = SubResource("CircleShape2D_racqx")
+
 [node name="weapon_horizontality" type="Node2D" parent="."]
 
 [node name="weapon_pivot" type="Node2D" parent="weapon_horizontality"]
@@ -1039,6 +1110,7 @@ offset = Vector2(2.5, -65)
 hframes = 6
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="weapon_horizontality/weapon_pivot/Weapon"]
+visible = false
 position = Vector2(427.635, -51.0348)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -1064,4 +1136,25 @@ offset_right = 38.5
 offset_bottom = 34.0
 texture = SubResource("GradientTexture2D_f446s")
 
+[node name="AggroHandler" type="Node2D" parent="."]
+script = ExtResource("8_qyx3t")
+
+[node name="FollowArea" type="Area2D" parent="AggroHandler"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroHandler/FollowArea"]
+shape = SubResource("CircleShape2D_3h4ff")
+
+[node name="AttackArea" type="Area2D" parent="AggroHandler"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroHandler/AttackArea"]
+shape = SubResource("CircleShape2D_advw2")
+
 [connection signal="timeout" from="AttackHandler/Charged_attack_timer" to="AttackHandler" method="_on_charged_attack_timer_timeout"]
+[connection signal="body_entered" from="AttackHandler/BasicAttack" to="AttackHandler" method="_on_basic_attack_body_entered"]
+[connection signal="body_exited" from="AttackHandler/BasicAttack" to="AttackHandler" method="_on_basic_attack_body_exited"]
+[connection signal="body_entered" from="AttackHandler/third_attack" to="AttackHandler" method="_on_third_attack_body_entered"]
+[connection signal="body_entered" from="AggroHandler/FollowArea" to="AggroHandler" method="_on_follow_area_body_entered"]
+[connection signal="body_exited" from="AggroHandler/FollowArea" to="AggroHandler" method="_on_follow_area_body_exited"]
+[connection signal="body_entered" from="AggroHandler/AttackArea" to="AggroHandler" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AggroHandler/AttackArea" to="AggroHandler" method="_on_attack_area_body_exited"]

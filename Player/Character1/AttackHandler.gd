@@ -116,3 +116,15 @@ func check_basic_attack():
 	
 func _on_charged_attack_timer_timeout():
 	charged_attack()
+
+
+func _on_basic_attack_body_entered(body):
+	print("Gya")
+	if body.is_in_group("Enemy"):
+		body.attacked(10)
+		body.attack_timer.start()
+
+func _on_third_attack_body_entered(body):
+	if body.is_in_group("Enemy"):
+		body.attacked(20)
+		body.attack_timer.start()

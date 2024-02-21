@@ -1,7 +1,7 @@
 extends Control
 var is_open: bool
 func _ready():
-	update_party()
+	pass
 	
 func _input(event):
 	if event.is_action_pressed("party") && is_open != true:
@@ -18,6 +18,7 @@ func close():
 	get_tree().paused = false
 	is_open = false
 	visible = false
+	update_party()
 
 
 func open_party_control():

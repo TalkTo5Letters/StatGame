@@ -1,0 +1,329 @@
+[gd_scene load_steps=25 format=3 uid="uid://8w2lvlhqxqhi"]
+
+[ext_resource type="PackedScene" uid="uid://b5tb37kfwvt8n" path="res://Enemies/Slime/slime_animations.tscn" id="1_b20nr"]
+
+[sub_resource type="GDScript" id="GDScript_x3f88"]
+resource_local_to_scene = true
+script/source = "extends CharacterBody2D
+var target
+var speed = 200
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+var state = follow
+var rng = RandomNumberGenerator.new()
+var randomnum
+var attack_timer
+var animation_tree
+var state_machine
+var direction
+var hp = 100
+
+func _ready():
+	$ProgressBar.value = hp
+	animation_tree = $AnimationTree
+	state_machine = animation_tree.get(\"parameters/playback\")
+	attack_timer = $AttackTimer
+	rng.randomize()
+	randomnum = rng.randf()
+	var slime_type = 1
+	var slime_frame = [0]
+	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 0, 0 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 1, 1 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 0, 0 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 1, 1 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 2, 2 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 3, 3 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 4, 4 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 5, 5 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 6, 6 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 0, 0 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 1, 1 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 2, 2 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 3, 3 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 4, 4 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 5, 5 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 6, 6 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 7, 7 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 8, 8 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 9, 9 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 10, 10 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 11, 11 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 12, 12 + (slime_type * 7))
+	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 13, 13 + (slime_type * 7))
+	
+
+func _physics_process(delta):
+	match state:
+		follow:
+			target = get_circle_position(randomnum)
+			move(target, delta)
+			state_machine.travel(\"Walking\")
+			$Idle1.visible = false
+			$Attack.visible = false
+			$Moving.visible = true
+			if direction.x > 0:
+				$Moving.flip_h = false
+			if direction.x < 0:
+				$Moving.flip_h = true
+		attack:
+			pass
+
+enum {
+	follow,
+	attack,
+	hit,
+}
+
+func move (target, delta):
+	direction = (target - global_position).normalized()
+	var desired_velocity = direction * speed
+	var steering = (desired_velocity - velocity) * delta * 2.5
+	velocity += steering
+	move_and_slide()
+	
+func get_circle_position(random):
+	var kill_circle_centre = PartyList.current_player_node.position
+	var radius = 80
+	var angle = random * PI * 2
+	var x = kill_circle_centre.x + cos(angle) * radius
+	var y = kill_circle_centre.y + sin(angle) * radius
+	return Vector2(x, y)
+
+func attack_player():
+	PartyList.current_player_node.take_damage(10)
+
+func reset_timer():
+	attack_timer.start()
+	
+func _on_attack_timer_timeout():
+	print(\"Giyatt\")
+	$Idle1.visible = false
+	$Attack.visible = true
+	$Moving.visible = false
+	if direction.x > 0:
+		$Attack.flip_h = false
+	if direction.x < 0:
+		$Attack.flip_h = true
+	state_machine.travel(\"Attack\")
+
+func attacked(damage):
+	print(\"took\" + str(damage) + \" damage!\")
+	print(hp)
+	hp -= damage
+	$ProgressBar.value = hp
+	$AnimationPlayer.play(\"damaged\")
+	if hp <= 0:
+		queue_free()
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jxf82"]
+load_path = "res://.godot/imported/slime_swallow.png-9312656a6ea6fae2ee440b4c53ebf3ac.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4f3r"]
+load_path = "res://.godot/imported/slime_move.png-53ddec003fc50eb0ca0e93a130c0a852.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mgufg"]
+load_path = "res://.godot/imported/slime_idle1.png-335312a3d577ec9a82cda34239160707.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mon4o"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_cfufb"]
+resource_name = "Attack"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"attack_player"
+}, {
+"args": [],
+"method": &"reset_timer"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jmyye"]
+resource_name = "Idle1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Idle1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_wlfe2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e3iwu"]
+resource_name = "Walking"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_gis64"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.411765, 0, 0.0235294, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bxsf"]
+_data = {
+"Attack": SubResource("Animation_cfufb"),
+"Idle1": SubResource("Animation_jmyye"),
+"RESET": SubResource("Animation_wlfe2"),
+"Walking": SubResource("Animation_e3iwu"),
+"damaged": SubResource("Animation_gis64")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h1o7j"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_shl4p"]
+animation = &"Idle1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12nmq"]
+animation = &"Walking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i42sg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxsxd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m54n2"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5xg6b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1mloo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_704jk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1tdsf"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8p2o5"]
+resource_local_to_scene = true
+states/Attack/node = SubResource("AnimationNodeAnimation_h1o7j")
+states/Attack/position = Vector2(425.333, 36.6667)
+states/Idle1/node = SubResource("AnimationNodeAnimation_shl4p")
+states/Idle1/position = Vector2(356, 100.222)
+states/Walking/node = SubResource("AnimationNodeAnimation_12nmq")
+states/Walking/position = Vector2(493.333, 101.111)
+transitions = ["Start", "Idle1", SubResource("AnimationNodeStateMachineTransition_i42sg"), "Idle1", "Attack", SubResource("AnimationNodeStateMachineTransition_vxsxd"), "Attack", "Idle1", SubResource("AnimationNodeStateMachineTransition_m54n2"), "Idle1", "Walking", SubResource("AnimationNodeStateMachineTransition_5xg6b"), "Walking", "Idle1", SubResource("AnimationNodeStateMachineTransition_1mloo"), "Attack", "Walking", SubResource("AnimationNodeStateMachineTransition_704jk"), "Walking", "Attack", SubResource("AnimationNodeStateMachineTransition_1tdsf")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x01bu"]
+bg_color = Color(0.145098, 0.721569, 0, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(3, 3)
+script = SubResource("GDScript_x3f88")
+
+[node name="Attack" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("CompressedTexture2D_jxf82")
+hframes = 14
+vframes = 7
+
+[node name="Moving" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_o4f3r")
+hframes = 7
+vframes = 7
+frame = 6
+
+[node name="Idle1" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("CompressedTexture2D_mgufg")
+hframes = 2
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 5)
+shape = SubResource("CircleShape2D_mon4o")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0bxsf")
+}
+tree_root = SubResource("AnimationNodeStateMachine_8p2o5")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("1_b20nr")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+zoom = Vector2(3, 3)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 7.0
+offset_top = -11.3333
+offset_right = 11.0
+offset_bottom = 15.6667
+rotation = 1.5708
+theme_override_styles/fill = SubResource("StyleBoxFlat_x01bu")
+value = 40.0
+fill_mode = 3
+show_percentage = false
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
