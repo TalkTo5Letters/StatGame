@@ -1,4 +1,6 @@
 extends Node2D
+@export var damage_multiplier = 1.0
+var damage
 var player_can_input
 var attack_pressed
 var animation_tree
@@ -7,7 +9,9 @@ var basic_attack_level
 var attacking
 var charged_attacking = false
 var state_machine_attacking
-
+var attack_friction :bool
+var attack_friction_distance :float
+var attack_velocity :Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,10 +19,12 @@ func _ready():
 	state_machine = animation_tree.get("parameters/playback")
 	state_machine_attacking = animation_tree.get("parameters/Attacking/playback")
 	attacking = false
+	attack_friction = false
 	player_can_input = true
 	attack_pressed = false
 	$Charged_attack_timer.set_paused(true)
 	basic_attack_level = 0
+	reload_stats()
 	pass # Replace with function body.
 
 
@@ -26,7 +32,7 @@ func _ready():
 func _process(delta):
 	if charged_attacking:
 		$"..".move_and_slide()
-
+		
 
 func start_charged_attack():
 	player_can_input = false
@@ -113,6 +119,13 @@ func check_basic_attack():
 			return true
 	else:
 		return false
+
+func attack_friction_dynamics(attack_friction :bool, attack_friction_distance :float):
+	if attack_friction == true:
+		$"..".velocity = ($"..".velocity.lerp(Vector2(1,0).rotated(get_angle_to(get_global_mouse_position())).normalized(), 1)) * attack_friction_distance
+		$"..".velocity = $"..".velocity
+		print($"..".velocity)
+		$"..".move_and_slide()
 	
 func _on_charged_attack_timer_timeout():
 	charged_attack()
@@ -121,10 +134,10 @@ func _on_charged_attack_timer_timeout():
 func _on_basic_attack_body_entered(body):
 	print("Gya")
 	if body.is_in_group("Enemy"):
-		body.attacked(10)
+		body.attacked(damage_multiplier * damage)
 		body.attack_timer.start()
 
-func _on_third_attack_body_entered(body):
-	if body.is_in_group("Enemy"):
-		body.attacked(20)
-		body.attack_timer.start()
+		
+func reload_stats():
+	damage = CharacterStats.Characters.get("Chara1").get("damage")
+	

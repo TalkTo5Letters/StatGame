@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotate(get_angle_to(get_global_mouse_position()) - deg_to_rad(180))
+	rotate(get_angle_to(get_global_mouse_position()) - deg_to_rad(270))
 
 func enable_collision():
 	monitoring = true
