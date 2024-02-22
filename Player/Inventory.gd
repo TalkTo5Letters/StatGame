@@ -10,11 +10,11 @@ func _input(event):
 func open():
 	Inv_is_open = true
 	get_tree().paused = true
-	$GridContainer.load_inv()
+	$ScrollContainer/GridContainer.load_inv()
 	visible = true
 	
 func close():
-	$GridContainer.clear_inv()
+	$ScrollContainer/GridContainer.clear_inv()
 	get_tree().paused = false
 	Inv_is_open = false
 	visible = false

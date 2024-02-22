@@ -45,15 +45,19 @@ offset_bottom = 53.0
 theme_override_font_sizes/font_size = 32
 text = "Consumables"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_top = 64.0
-offset_right = 1152.0
+offset_right = 900.0
 offset_bottom = 648.0
-theme_override_constants/h_separation = 96
-theme_override_constants/v_separation = 96
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 9
 script = ExtResource("2_jtygb")
 
-[connection signal="pressed" from="ColorRect/Weapon" to="GridContainer" method="_on_weapon_pressed"]
-[connection signal="pressed" from="ColorRect/Artifacts" to="GridContainer" method="_on_artifacts_pressed"]
-[connection signal="pressed" from="ColorRect/Consumables" to="GridContainer" method="_on_consumables_pressed"]
+[connection signal="pressed" from="ColorRect/Weapon" to="ScrollContainer/GridContainer" method="_on_weapon_pressed"]
+[connection signal="pressed" from="ColorRect/Artifacts" to="ScrollContainer/GridContainer" method="_on_artifacts_pressed"]
+[connection signal="pressed" from="ColorRect/Consumables" to="ScrollContainer/GridContainer" method="_on_consumables_pressed"]

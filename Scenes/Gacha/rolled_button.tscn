@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://31s67f84amjp"]
 
-[ext_resource type="Script" path="res://Scenes/Gacha/character_button.gd" id="1_1nduj"]
-[ext_resource type="Texture2D" uid="uid://1a3mm6d1t4wl" path="res://Graphics/Player/Ikuyo_Kita_Character_Design_2.png" id="2_7pri2"]
+[ext_resource type="Script" path="res://Scenes/Gacha/rolled_button.gd" id="1_m42sh"]
+[ext_resource type="Texture2D" uid="uid://1a3mm6d1t4wl" path="res://Graphics/Player/Ikuyo_Kita_Character_Design_2.png" id="2_4833v"]
 
 [node name="CharacterButton" type="Control"]
 self_modulate = Color(1, 1, 1, 0)
@@ -13,14 +13,14 @@ offset_right = 200.0
 offset_bottom = 350.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_1nduj")
+script = ExtResource("1_m42sh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 350.0
 mouse_filter = 2
-texture = ExtResource("2_7pri2")
+texture = ExtResource("2_4833v")
 expand_mode = 1
 stretch_mode = 5
 

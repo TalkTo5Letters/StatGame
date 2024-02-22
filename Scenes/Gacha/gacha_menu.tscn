@@ -111,4 +111,5 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.8)
 
 [connection signal="pressed" from="GachaScreen/1roll" to="." method="_on_roll_pressed"]
+[connection signal="pressed" from="GachaScreen/5roll" to="." method="_on_five_roll_pressed"]
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

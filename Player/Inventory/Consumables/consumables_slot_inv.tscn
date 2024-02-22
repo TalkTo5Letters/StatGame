@@ -5,8 +5,11 @@
 
 [node name="ConsumabletSlotInv" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(96, 96)
 offset_right = 96.0
 offset_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_vti06")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
