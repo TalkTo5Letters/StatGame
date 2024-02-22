@@ -9,12 +9,15 @@ var basic_attack_level
 var attacking
 var charged_attacking = false
 var state_machine_attacking
-var attack_friction :bool
+var attack_friction 
 var attack_friction_distance :float
 var attack_velocity :Vector2
+var speed
+var stop_move
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	stop_move = false
 	animation_tree = $"../AnimationTree"
 	state_machine = animation_tree.get("parameters/playback")
 	state_machine_attacking = animation_tree.get("parameters/Attacking/playback")
@@ -29,10 +32,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta):
-	if charged_attacking:
+	print(($"..".velocity))
+	if charged_attacking == true:
 		$"..".move_and_slide()
-		
 
 func start_charged_attack():
 	player_can_input = false
@@ -53,7 +57,6 @@ func cant_attack():
 		player_can_input = true
 
 func attack_done():
-	$"..".velocity = Vector2(0,0)
 	if !Input.is_action_pressed("primary"):
 		$Charged_attack_timer.set_paused(true)
 	player_can_input = true
@@ -98,7 +101,7 @@ func charged_attack():
 	attacking = true
 	state_machine.travel("Attacking")
 	state_machine_attacking.travel("Special_Attacks_Charged_Attack")
-	$"..".velocity = $"..".velocity.lerp(Vector2(1,0).rotated(get_angle_to(get_global_mouse_position())).normalized() * 400, 1) * 2 
+	$"..".velocity = $"..".velocity.lerp(Vector2(1,0).rotated(get_angle_to(get_global_mouse_position())).normalized() * 400, 1) *  2
 	
 func elemental_attack():
 	pass
@@ -120,12 +123,6 @@ func check_basic_attack():
 	else:
 		return false
 
-func attack_friction_dynamics(attack_friction :bool, attack_friction_distance :float):
-	if attack_friction == true:
-		$"..".velocity = ($"..".velocity.lerp(Vector2(1,0).rotated(get_angle_to(get_global_mouse_position())).normalized(), 1)) * attack_friction_distance
-		$"..".velocity = $"..".velocity
-		print($"..".velocity)
-		$"..".move_and_slide()
 	
 func _on_charged_attack_timer_timeout():
 	charged_attack()
@@ -140,4 +137,4 @@ func _on_basic_attack_body_entered(body):
 		
 func reload_stats():
 	damage = CharacterStats.Characters.get("Chara1").get("damage")
-	
+	speed = CharacterStats.Characters.get("Chara1").get("damage")

@@ -5,6 +5,8 @@ var state_machine
 var input_direction
 var player_sprite
 var mouse_angle
+var move_input :Vector2
+
 
 var hp
 var damage
@@ -21,13 +23,14 @@ var character_name
 @export var sprint = 1.2
 
 func _ready():
+	$AttackHandler/Attack_Collision["monitoring"] = false
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
 	player_sprite = $Player_Sprite
 	state_machine = animation_tree.get("parameters/playback")
 	animation_tree["active"] = true
 	CharacterStats = get_node("/root/CharacterStats")
-	update_animation_parameters(Vector2(0,1), false)
+	move_input = Vector2(1, 0)
 	reload_stats()
 	
 func get_input():
@@ -36,30 +39,28 @@ func get_input():
 
 func movement():
 	var direction = get_input()
-	update_animation_parameters(direction, false)
 	if direction.length() > 0:
 		if Input.is_action_pressed("sprint"):
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) * sprint
-			update_animation_parameters(direction, true)
 		else:
 			velocity = velocity.lerp(direction.normalized() * speed, acceleration) 
-			update_animation_parameters(direction, false)
 	else:
-		update_animation_parameters(direction, false)
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 	move_and_slide()
 	
 	
 func _physics_process(delta):
 	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
+		update_animation_parameters()
 		get_input()
 		movement()
 
-func update_animation_parameters(move_input : Vector2, sprint: bool):
+func update_animation_parameters():
+	var move_input = get_input()
 	var mouse_position = get_global_mouse_position()
 	var mouse_angle = rad_to_deg(get_angle_to(mouse_position))
 	if move_input.length() > 0:
-		if sprint:
+		if "sprint":
 			animation_tree.set("parameters/Walk/TimeScale/scale", 2)
 			state_machine.travel("Walk")
 		else:

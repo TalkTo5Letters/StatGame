@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2kv2urymah7l"
-path="res://.godot/imported/dummy_armless_spritesheet.png-e062f8a6028b3359042b4a000d9ffc1a.ctex"
+uid="uid://b8jdlfsmwti5j"
+path="res://.godot/imported/chara2.png-08b2803cc47c123ebd3e3246b13b9a96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/dummy_armless_spritesheet.png"
-dest_files=["res://.godot/imported/dummy_armless_spritesheet.png-e062f8a6028b3359042b4a000d9ffc1a.ctex"]
+source_file="res://Animations/chara2.png"
+dest_files=["res://.godot/imported/chara2.png-08b2803cc47c123ebd3e3246b13b9a96.ctex"]
 
 [params]
 

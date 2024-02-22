@@ -481,15 +481,9 @@ tracks/15/path = NodePath("AttackHandler")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.1, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [true, 0.0],
-"method": &"attack_friction_dynamics"
-}, {
-"args": [false, 0.0],
-"method": &"attack_friction_dynamics"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_xbyvr"]
