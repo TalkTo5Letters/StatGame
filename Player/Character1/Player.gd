@@ -50,10 +50,14 @@ func movement():
 	
 	
 func _physics_process(delta):
+	movement()
+	if $AttackHandler.attacking == true:
+		velocity = velocity * 0.1
+		
 	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
 		update_animation_parameters()
 		get_input()
-		movement()
+
 
 func update_animation_parameters():
 	var move_input = get_input()
