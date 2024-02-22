@@ -24,7 +24,7 @@ var Characters = {
 		"scene_path": "res://Player/Character2/Chara2.tscn",
 		"texture": "res://Graphics/Player/Ikuyo_Kita_Character_Design_2.png",
 		"weapon": "Sword",
-		"current_status": "alive", #dead, alive, locked
+		"current_status": "locked", #dead, alive, locked
 		"hp": 100,
 		"max_hp": 100,
 		"damage": 10,

@@ -14,7 +14,7 @@ func _ready():
 		characterbutton.current_slot = current_slot
 		characterbutton.status = "unlocked"
 		$ScrollContainer/GridContainer.add_child(characterbutton)
-	for i in unlocked_characters:
+	for i in locked_characters:
 		var characterbutton = preload("res://Player/Party/character_button.tscn").instantiate()
 		characterbutton.character = i
 		characterbutton.current_slot = current_slot

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c24kesuvfmya"]
+[gd_scene load_steps=10 format=3 uid="uid://c24kesuvfmya"]
 
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Label.gd" id="5_8sikj"]
 [ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
 [ext_resource type="VideoStream" path="res://insomnia-chan-hot.ogv" id="6_8vaql"]
+[ext_resource type="PackedScene" uid="uid://dei08gkxaa3ao" path="res://Scenes/Gacha/gacha_menu.tscn" id="6_l5klw"]
 [ext_resource type="Script" path="res://enemy_spawner.gd" id="7_1mkj8"]
 
 [node name="Node2D" type="Node2D"]
@@ -41,6 +42,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("5_8sikj")
 
+[node name="GachaMenu" parent="CanvasLayer" instance=ExtResource("6_l5klw")]
+visible = false
+
 [node name="1GhgDm-plan" type="Sprite2D" parent="."]
 z_index = -2
 texture_filter = 1
@@ -60,7 +64,6 @@ loop = true
 script = ExtResource("7_1mkj8")
 
 [node name="SlimeSpawner" type="Timer" parent="Node"]
-wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Node/SlimeSpawner" to="Node" method="_on_slime_spawner_timeout"]

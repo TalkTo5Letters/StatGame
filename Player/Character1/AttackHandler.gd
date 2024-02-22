@@ -39,6 +39,8 @@ func start_charged_attack():
 	charged_attacking = true
 	
 func stop_charged_attack():
+	if !Input.is_action_pressed("primary"):
+		$Charged_attack_timer.set_paused(true)
 	$Charged_attack_timer.set_paused(true)
 	charged_attacking = false
 
@@ -53,6 +55,7 @@ func cant_attack():
 		player_can_input = true
 
 func attack_done():
+	print($Charged_attack_timer.time_left)
 	$"..".velocity = Vector2(0,0)
 	if !Input.is_action_pressed("primary"):
 		$Charged_attack_timer.set_paused(true)
@@ -62,7 +65,7 @@ func attack_done():
 
 func basic_attack():
 	$Charged_attack_timer.set_paused(false)
-	$Charged_attack_timer.start(1)
+	$Charged_attack_timer.start(0.2)
 	print($Charged_attack_timer.time_left)
 	basic_attack_level += 1
 	match basic_attack_level:
@@ -72,11 +75,12 @@ func basic_attack():
 			basic_attack2()
 		3:
 			basic_attack3()
-		4:
-			attack_done()
+		_:
+			pass
 
 
 func basic_attack1():
+	$Charged_attack_timer.set_paused(true)
 	player_can_input = false
 	attacking = true
 	state_machine.travel("Attacking")
@@ -84,11 +88,13 @@ func basic_attack1():
 	
 	
 func basic_attack2():
+	$Charged_attack_timer.set_paused(true)
 	state_machine.travel("Attacking")
 	state_machine_attacking.travel("Basic_Attack_Attack2")
 	player_can_input = false
 	
 func basic_attack3():
+	$Charged_attack_timer.set_paused(true)
 	state_machine.travel("Attacking")
 	state_machine_attacking.travel("Basic_Attack_Attack3")
 	player_can_input = false
@@ -110,11 +116,12 @@ func check_basic_attack():
 	if Input.is_action_pressed("primary") && player_can_input:
 		if $Charged_attack_timer.is_paused():
 			$Charged_attack_timer.set_paused(false)
-			$Charged_attack_timer.start(1)
+			$Charged_attack_timer.start(0.2)
 			return false
 	if Input.is_action_just_released("primary") && player_can_input:
+		print($Charged_attack_timer.time_left)
 		$Charged_attack_timer.set_paused(true)
-		if $Charged_attack_timer.time_left > 0 && $Charged_attack_timer.time_left < 1:
+		if $Charged_attack_timer.time_left > 0 && $Charged_attack_timer.time_left < .5:
 			basic_attack()
 			return true
 	else:
