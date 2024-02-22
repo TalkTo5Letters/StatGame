@@ -1439,7 +1439,7 @@ position_smoothing_enabled = true
 script = ExtResource("3_oytl6")
 
 [node name="Charged_attack_timer" type="Timer" parent="AttackHandler"]
-wait_time = 0.85
+wait_time = 0.5
 one_shot = true
 
 [node name="Attack_Collision" type="Area2D" parent="AttackHandler"]

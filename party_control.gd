@@ -76,7 +76,7 @@ func load_screen(Party):
 
 func get_characters():
 	for i in CharacterStats.Characters:
-		if CharacterStats.Characters.get(i).get(CharacterStats.Characters) == "locked":
+		if CharacterStats.Characters.get(i).get("current_status") == "locked":
 			locked_charas.append(i)
 		else:
 			unlocked_charas.append(i)

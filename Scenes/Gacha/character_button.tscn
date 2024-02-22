@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://31s67f84amjp"]
+
+[ext_resource type="Script" path="res://Scenes/Gacha/character_button.gd" id="1_1nduj"]
+[ext_resource type="Texture2D" uid="uid://1a3mm6d1t4wl" path="res://Graphics/Player/Ikuyo_Kita_Character_Design_2.png" id="2_7pri2"]
+
+[node name="CharacterButton" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 350.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_1nduj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+texture = ExtResource("2_7pri2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 350.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

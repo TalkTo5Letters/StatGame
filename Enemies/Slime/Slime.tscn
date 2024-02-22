@@ -24,8 +24,8 @@ func _ready():
 	state_machine = animation_tree.get(\"parameters/playback\")
 	attack_timer = $AttackTimer
 	rng.randomize()
-	randomnum = rng.randf()
-	var slime_type = 1
+	randomnum = rng.randi_range(0, 6)
+	var slime_type = randomnum
 	var slime_frame = [0]
 	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 0, 0 + (slime_type * 7))
 	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 1, 1 + (slime_type * 7))
@@ -293,6 +293,7 @@ visible = false
 texture = SubResource("CompressedTexture2D_mgufg")
 hframes = 2
 vframes = 7
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 5)

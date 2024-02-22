@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://dei08gkxaa3ao"]
+
+[ext_resource type="VideoStream" path="res://Graphics/output.ogv" id="1_d3a0a"]
+[ext_resource type="Script" path="res://Scenes/Gacha/gacha_menu.gd" id="1_nhlpd"]
+[ext_resource type="Texture2D" uid="uid://ccod4dafbbj5l" path="res://Scenes/Gacha/Eswgy9JUcAM4gte.png" id="3_2gyqh"]
+
+[sub_resource type="Animation" id="Animation_b1itf"]
+resource_name = "Fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeIn:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3w8sl"]
+_data = {
+"Fade_in": SubResource("Animation_b1itf")
+}
+
+[node name="GachaMenu" type="Control"]
+modulate = Color(1, 1, 0.992157, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhlpd")
+
+[node name="GachaScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="GachaScreen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.352941)
+
+[node name="1roll" type="Button" parent="GachaScreen"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 533.0
+offset_right = 328.0
+offset_bottom = 599.0
+theme_override_font_sizes/font_size = 42
+text = "Roll 1 time"
+
+[node name="5roll" type="Button" parent="GachaScreen"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 531.0
+offset_right = 1051.0
+offset_bottom = 597.0
+theme_override_font_sizes/font_size = 42
+text = "Roll 5 times"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_right = 1246.0
+offset_bottom = 701.0
+mouse_filter = 2
+stream = ExtResource("1_d3a0a")
+expand = true
+
+[node name="GachaResult" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GachaResult"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("3_2gyqh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GridContainer" type="GridContainer" parent="GachaResult"]
+layout_mode = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/h_separation = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3w8sl")
+}
+
+[node name="FadeIn" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.8)
+
+[connection signal="pressed" from="GachaScreen/1roll" to="." method="_on_roll_pressed"]
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
