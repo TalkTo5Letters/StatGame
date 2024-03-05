@@ -1,7 +1,7 @@
 [gd_scene load_steps=64 format=3 uid="uid://do8ydv0tkvq88"]
 
 [ext_resource type="Script" path="res://Player/Character1/Player.gd" id="1_uhdnc"]
-[ext_resource type="Texture2D" uid="uid://b8jdlfsmwti5j" path="res://Animations/chara2.png" id="2_cf867"]
+[ext_resource type="Texture2D" uid="uid://dsetnqdds3auq" path="res://Animations/Character_Sprites/chara_spritesheet.png" id="2_yf7oi"]
 [ext_resource type="Script" path="res://Player/Character1/AttackHandler.gd" id="3_oytl6"]
 [ext_resource type="Script" path="res://Player/Character1/BasicAttack.gd" id="4_kbwwk"]
 [ext_resource type="Texture2D" uid="uid://c5nlo453ksl68" path="res://Graphics/Player/dummy_CANDYWEAPON_spritesheet.png" id="5_6qey0"]
@@ -1388,7 +1388,6 @@ radius = 153.648
 
 [node name="Character1" type="CharacterBody2D"]
 z_index = 1
-scale = Vector2(0.175, 0.175)
 disable_mode = 2
 collision_mask = 30
 script = ExtResource("1_uhdnc")
@@ -1398,7 +1397,7 @@ metadata/_edit_horizontal_guides_ = [119.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player_Sprite"]
 position = Vector2(0, 100)
-texture = ExtResource("2_cf867")
+texture = ExtResource("2_yf7oi")
 offset = Vector2(0, -100)
 hframes = 7
 
@@ -1432,7 +1431,7 @@ position = Vector2(5, 105)
 shape = SubResource("CapsuleShape2D_1w1lc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.75, 2.75)
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
 [node name="AttackHandler" type="Node2D" parent="."]

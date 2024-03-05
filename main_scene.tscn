@@ -81,4 +81,6 @@ action = "inventory"
 [node name="SlimeSpawner" parent="." instance=ExtResource("9_4jdoi")]
 
 [node name="Level1" parent="." instance=ExtResource("12_40620")]
+z_index = -2
 position = Vector2(-328, -573)
+scale = Vector2(3, 3)

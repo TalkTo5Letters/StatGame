@@ -147,6 +147,7 @@ pattern_0 = SubResource("TileMapPattern_k2d03")
 [node name="Level1" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_wsq2r")
 rendering_quadrant_size = 48
 format = 2

@@ -11,7 +11,7 @@ var Characters = {
 		"hp": 100,
 		"max_hp": 100,
 		"damage": 10,
-		"speed": 400,
+		"speed": 500,
 		"crit_dmg": 150,
 		"crit_rate": 50,
 		"attack_speed": 100,
