@@ -12,6 +12,11 @@ func _ready():
 func _process(delta):
 	if check_character_switch():
 		switch_characters()
+	
+func _notification(what):
+	match what:
+		NOTIFICATION_WM_GO_BACK_REQUEST:
+			Input.action_press("escape")
 
 func load_party():
 	party = PartyList.party
@@ -65,7 +70,7 @@ func check_character_switch() -> bool:
 
 func switch_characters():
 	print(current_character.position)
-	PartyList.current_player_pos = current_character.position
+	PartyList.current_player_pos = current_character.position 
 	for i in party:
 		if i != "empty":
 			var character_scene_path = CharacterStats.Characters.get(i).get("scene_path")

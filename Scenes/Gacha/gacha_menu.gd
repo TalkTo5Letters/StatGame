@@ -16,11 +16,13 @@ func _input(event):
 		
 
 func open():
+	$"../Control".visible = false
 	is_gacha_open = true
 	get_tree().paused = true
 	visible = true
 	
 func close():
+	$"../Control".visible = true
 	if is_in_result && animation_playing == false:
 		end_gacha_result()
 	else:

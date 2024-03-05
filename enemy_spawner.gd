@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,6 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_slime_spawner_timeout():
+
+func _on_slime_spawner_timer_timeout():
 	var slime = load("res://Enemies/Slime/Slime.tscn").instantiate()
 	add_child(slime)

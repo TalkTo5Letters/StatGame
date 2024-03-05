@@ -27,29 +27,6 @@ func _ready():
 	randomnum = rng.randi_range(0, 6)
 	var slime_type = randomnum
 	var slime_frame = [0]
-	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 0, 0 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Idle1\").track_set_key_value(0, 1, 1 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 0, 0 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 1, 1 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 2, 2 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 3, 3 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 4, 4 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 5, 5 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Walking\").track_set_key_value(0, 6, 6 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 0, 0 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 1, 1 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 2, 2 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 3, 3 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 4, 4 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 5, 5 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 6, 6 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 7, 7 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 8, 8 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 9, 9 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 10, 10 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 11, 11 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 12, 12 + (slime_type * 7))
-	$AnimationPlayer.get_animation(\"Attack\").track_set_key_value(0, 13, 13 + (slime_type * 7))
 	
 
 func _physics_process(delta):
@@ -96,7 +73,6 @@ func reset_timer():
 	attack_timer.start()
 	
 func _on_attack_timer_timeout():
-	print(\"Giyatt\")
 	$Idle1.visible = false
 	$Attack.visible = true
 	$Moving.visible = false
@@ -107,8 +83,6 @@ func _on_attack_timer_timeout():
 	state_machine.travel(\"Attack\")
 
 func attacked(damage):
-	print(\"took\" + str(damage) + \" damage!\")
-	print(hp)
 	hp -= damage
 	$ProgressBar.value = hp
 	$AnimationPlayer.play(\"damaged\")
@@ -273,7 +247,10 @@ transitions = ["Start", "Idle1", SubResource("AnimationNodeStateMachineTransitio
 bg_color = Color(0.145098, 0.721569, 0, 1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Enemy"]]
-scale = Vector2(3, 3)
+disable_mode = 2
+collision_layer = 2
+collision_mask = 31
+floor_stop_on_slope = false
 script = SubResource("GDScript_x3f88")
 
 [node name="Attack" type="Sprite2D" parent="."]
@@ -293,7 +270,6 @@ visible = false
 texture = SubResource("CompressedTexture2D_mgufg")
 hframes = 2
 vframes = 7
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 5)
@@ -307,10 +283,6 @@ tree_root = SubResource("AnimationNodeStateMachine_8p2o5")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" parent="." instance=ExtResource("1_b20nr")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-zoom = Vector2(3, 3)
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0

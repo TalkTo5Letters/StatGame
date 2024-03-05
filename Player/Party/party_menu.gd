@@ -10,11 +10,13 @@ func _input(event):
 		close()
 
 func open():
+	$"../Control".visible = false
 	is_open = true
 	get_tree().paused = true
 	visible = true
 	
 func close():
+	$"../Control".visible = true
 	get_tree().paused = false
 	is_open = false
 	visible = false

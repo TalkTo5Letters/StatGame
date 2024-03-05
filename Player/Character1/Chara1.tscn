@@ -1360,8 +1360,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-489.536, -37.2109)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1w1lc"]
-radius = 8.0
-height = 28.0
+radius = 15.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wy665"]
 radius = 141.25
@@ -1388,9 +1387,10 @@ radius = 432.565
 radius = 153.648
 
 [node name="Character1" type="CharacterBody2D"]
-position = Vector2(-550, 0)
-scale = Vector2(0.8, 0.8)
-collision_mask = 2
+z_index = 1
+scale = Vector2(0.175, 0.175)
+disable_mode = 2
+collision_mask = 30
 script = ExtResource("1_uhdnc")
 metadata/_edit_horizontal_guides_ = [119.0]
 
@@ -1428,11 +1428,11 @@ parameters/Walk/walking/conditions/facing_down = false
 parameters/Walk/walking/conditions/facing_up = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(5, 105)
 shape = SubResource("CapsuleShape2D_1w1lc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(2.75, 2.75)
 position_smoothing_enabled = true
 
 [node name="AttackHandler" type="Node2D" parent="."]
@@ -1443,6 +1443,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Attack_Collision" type="Area2D" parent="AttackHandler"]
+collision_mask = 30
 script = ExtResource("4_kbwwk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHandler/Attack_Collision"]
@@ -1466,25 +1467,6 @@ texture = ExtResource("5_6qey0")
 offset = Vector2(2.5, -65)
 hframes = 6
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="weapon_horizontality/weapon_pivot/Weapon"]
-visible = false
-position = Vector2(427.635, -51.0348)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 216.22
-initial_velocity_max = 403.71
-orbit_velocity_min = -1.05
-orbit_velocity_max = 3.85
-radial_accel_min = 100.0
-radial_accel_max = 100.0
-angle_min = -490.2
-angle_max = 490.2
-scale_amount_min = 1.77
-scale_amount_max = 9.37
-color = Color(1, 0.494118, 1, 1)
-hue_variation_min = -0.7
-hue_variation_max = 0.2
-
 [node name="hand" type="TextureRect" parent="weapon_horizontality/weapon_pivot/Weapon"]
 material = SubResource("ShaderMaterial_nqpbb")
 offset_left = -37.5
@@ -1497,12 +1479,14 @@ texture = SubResource("GradientTexture2D_f446s")
 script = ExtResource("8_qyx3t")
 
 [node name="FollowArea" type="Area2D" parent="AggroHandler"]
+collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroHandler/FollowArea"]
 visible = false
 shape = SubResource("CircleShape2D_3h4ff")
 
 [node name="AttackArea" type="Area2D" parent="AggroHandler"]
+collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroHandler/AttackArea"]
 visible = false

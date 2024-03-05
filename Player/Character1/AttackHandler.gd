@@ -34,8 +34,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 	
 func _process(delta):
-	print(($"..".velocity))
 	if charged_attacking == true:
+		$"..".velocity = $"..".velocity.lerp(Vector2(1,0).rotated(get_angle_to(get_global_mouse_position())).normalized() * 400, 1) *  2
 		$"..".move_and_slide()
 
 func start_charged_attack():

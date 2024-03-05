@@ -8,12 +8,14 @@ func _input(event):
 		close()
 
 func open():
+	$"../Control".visible = false
 	Inv_is_open = true
 	get_tree().paused = true
 	$ScrollContainer/GridContainer.load_inv()
 	visible = true
 	
 func close():
+	$"../Control".visible = true
 	$ScrollContainer/GridContainer.clear_inv()
 	get_tree().paused = false
 	Inv_is_open = false

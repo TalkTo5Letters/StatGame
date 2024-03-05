@@ -18,7 +18,7 @@ var is_attacking
 var CharacterStats
 var character_name
 
-@export var friction = 0.2
+@export var friction = 0.5
 @export var acceleration = 0.5
 @export var sprint = 1.2
 
@@ -51,7 +51,7 @@ func movement():
 	
 func _physics_process(delta):
 	movement()
-	if $AttackHandler.attacking == true:
+	if $AttackHandler.attacking == true && $AttackHandler.charged_attacking == false:
 		velocity = velocity * 0.1
 		
 	if $AttackHandler.check_basic_attack() == false && $AttackHandler.attacking == false:
@@ -146,4 +146,5 @@ func reload_stats():
 	print(attack_speed)
 
 func take_damage(damage):
-	print("Player has taken " + str(damage) + " amount of damage")
+	CharacterStats.Characters["Chara1"]["hp"] -= damage
+	print(CharacterStats.Characters["Chara1"]["hp"])

@@ -1,26 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://c24kesuvfmya"]
+[gd_scene load_steps=11 format=3 uid="uid://c24kesuvfmya"]
 
 [ext_resource type="PackedScene" uid="uid://wqb7ehfk3wnx" path="res://Player/Party.tscn" id="1_e65cb"]
 [ext_resource type="PackedScene" uid="uid://bas21foes3v86" path="res://Player/Inventory.tscn" id="2_haq2p"]
-[ext_resource type="Texture2D" uid="uid://mtyudjksu4by" path="res://icon.svg" id="2_u0o4u"]
+[ext_resource type="Script" path="res://CanvasLayer.gd" id="3_sjk03"]
 [ext_resource type="PackedScene" uid="uid://b2u4o1p3t3s2d" path="res://Player/Party/party_menu.tscn" id="4_gskhg"]
 [ext_resource type="Script" path="res://Label.gd" id="5_8sikj"]
-[ext_resource type="Texture2D" uid="uid://cuiq6mk3x07d5" path="res://1GhgDm-plan.png" id="5_48iog"]
-[ext_resource type="VideoStream" path="res://insomnia-chan-hot.ogv" id="6_8vaql"]
 [ext_resource type="PackedScene" uid="uid://dei08gkxaa3ao" path="res://Scenes/Gacha/gacha_menu.tscn" id="6_l5klw"]
-[ext_resource type="Script" path="res://enemy_spawner.gd" id="7_1mkj8"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://Virtual_Joystick/joystick/virtual_joystick.tscn" id="7_rtbpt"]
+[ext_resource type="Texture2D" uid="uid://ch3dtid2dwxgf" path="res://Graphics/Consumables/maxresdefault(1).png" id="8_1oqth"]
+[ext_resource type="PackedScene" uid="uid://dqmr7sq2ymhoc" path="res://Scenes/Levels/Dungeon Rooms/slime_spawner.tscn" id="9_4jdoi"]
+[ext_resource type="PackedScene" uid="uid://q8x61adx8y4i" path="res://Scenes/Levels/level_1.tscn" id="12_40620"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Party" parent="." instance=ExtResource("1_e65cb")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-144, 95)
-texture = ExtResource("2_u0o4u")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+script = ExtResource("3_sjk03")
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("2_haq2p")]
 process_mode = 3
@@ -41,29 +38,47 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("5_8sikj")
+metadata/_edit_use_anchors_ = true
 
 [node name="GachaMenu" parent="CanvasLayer" instance=ExtResource("6_l5klw")]
 visible = false
 
-[node name="1GhgDm-plan" type="Sprite2D" parent="."]
-z_index = -2
-texture_filter = 1
-position = Vector2(18, 8)
-scale = Vector2(7.5, 7.5)
-texture = ExtResource("5_48iog")
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+[node name="Control" type="Control" parent="CanvasLayer"]
 visible = false
-offset_right = 544.0
-offset_bottom = 640.0
-stream = ExtResource("6_8vaql")
-autoplay = true
-loop = true
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("7_1mkj8")
+[node name="Virtual Joystick" parent="CanvasLayer/Control" instance=ExtResource("7_rtbpt")]
+layout_mode = 1
+offset_top = 300.0
+offset_bottom = 600.0
+action_left = "left"
+action_right = "right"
+action_up = "up"
+action_down = "down"
 
-[node name="SlimeSpawner" type="Timer" parent="Node"]
-autostart = true
+[node name="Party" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(686, 0)
+scale = Vector2(0.105556, 0.105556)
+texture_normal = ExtResource("8_1oqth")
+action = "party"
 
-[connection signal="timeout" from="Node/SlimeSpawner" to="Node" method="_on_slime_spawner_timeout"]
+[node name="Gacha" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(841, -3)
+scale = Vector2(0.105556, 0.105556)
+texture_normal = ExtResource("8_1oqth")
+action = "gacha"
+
+[node name="Inventory" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(1016, 0)
+scale = Vector2(0.105556, 0.105556)
+texture_normal = ExtResource("8_1oqth")
+action = "inventory"
+
+[node name="SlimeSpawner" parent="." instance=ExtResource("9_4jdoi")]
+
+[node name="Level1" parent="." instance=ExtResource("12_40620")]
+position = Vector2(-328, -573)
